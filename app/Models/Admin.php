@@ -23,7 +23,7 @@ protected $appends = ['image_url'];
     {
         return $this->image ?
             url('storage/' . $this->image):
-        url('images/user.png' )
+            url('website/assets/img/author.png')
          ;
     }
 

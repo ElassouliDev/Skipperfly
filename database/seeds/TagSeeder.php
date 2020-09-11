@@ -11,6 +11,26 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+        $tags = [
+            ['title'=>'Best'],
+            ['title'=>'Tour Guide'],
+            ['title'=>'Service Pro'],
+            ['title'=>'Say'],
+            ['title'=>'Exactly'],
+            ['title'=>'Man'],
+            ['title'=>'Hot'],
+            ['title'=>'Summer'],
+            ['title'=>'Creative'],
+            ['title'=>'Healthy'],
+        ] ;
+
+
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        \App\Models\Tag::truncate();
+        foreach ($tags as $tag)
+            \App\Models\Tag::create($tag);
+
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
     }
 }

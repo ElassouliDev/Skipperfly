@@ -11,6 +11,14 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        \App\Models\Article::truncate();
+            factory(\App\Models\Article::class,1000)->create()->each(function($article) {
+             $tags_ids = \App\Models\Tag::pluck('id')->toArray();
+            $article->tags()->sync(  \Illuminate\Support\Arr::random($tags_ids, rand(1, count($tags_ids)-1)));
+
+            });
+
+            \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
     }
 }

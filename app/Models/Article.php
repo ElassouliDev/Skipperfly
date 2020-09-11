@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Sluggable\HasSlug;
@@ -25,10 +26,14 @@ class Article extends Model
     }
     public function getImageUrlAttribute()
     {
-        return $this->image ?
+        return !in_array( $this->image, ['B1.png','B2.png','B3.png','B4.png','B5.png','B6.png','B7.png','B8.png'])?
             url('storage/' . $this->image):
-            url('images/article.png' )
+            url('website//assets/img/'.$this->image )
             ;
+    }
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('F d,Y');
     }
 
     public function setImageAttribute($value)
@@ -36,6 +41,9 @@ class Article extends Model
         if (is_file($value)){
             @Storage::delete($this->image);
             $this->attributes['image'] = $value->store('articles');
+
+        }elseif(in_array($value, ['B1.png','B2.png','B3.png','B4.png','B5.png','B6.png','B7.png','B8.png'])){
+            $this->attributes['image'] = $value;
 
         }
     }

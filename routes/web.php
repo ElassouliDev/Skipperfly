@@ -20,12 +20,18 @@ Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(fu
     Route::resource('article','ArticleController')->except('show');
 
 
-    Route::get('/', function () {
-        $route = "";
-        $title = "";
-        return view('dashboard.layouts.index' , compact('route' ,'title'));
-    })->name('index');
+//    Route::get('/', function () {
+//        $route = "";
+//        $title = "";
+//        return view('dashboard.layouts.index' , compact('route' ,'title'));
+//    })->name('index');
 });
-Route::get('/', function () {
-    return view('welcome');
+
+Route::namespace('Website')->name('website.')->group(function () {
+    Route::get('', 'HomeController@index')->name('index');
+    Route::get('/article/{slug}', 'ArticleController@show')->name('article.show');
+    Route::get('/category/{slug}', 'HomeController@show_category')->name('category.show');
+    Route::get('/tag/{slug}', 'HomeController@show_tag')->name('tag.show');
+
+
 });

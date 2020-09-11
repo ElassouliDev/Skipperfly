@@ -2,6 +2,7 @@
 return [
     'id'=>'#',
     'tag'=>'Tag',
+    'home'=>'Home',
     'tags'=>'Tags',
     'category'=>'Category',
     'description'=>'Description',
@@ -26,5 +27,6 @@ return [
     'updated_successfully'=>'Updated Successfully',
     'added_successfully'=>'Added Successfully',
     'confirm_delete_msg'=>'Are you wont delete :name ?',
+    'no_article'=>'No Article  Exists',
 ];
 
