@@ -2,6 +2,7 @@
 return [
     'id'=>'#',
     'tag'=>'Tag',
+    'tags'=>'Tags',
     'category'=>'Category',
     'description'=>'Description',
     'title'=>'Title',
@@ -16,6 +17,10 @@ return [
     'keywords'=>'Keywords',
     'add_to_nav'=>'Add to nav',
     'color'=>'Color',
+    'content'=>'Content',
+    'image'=>'Image',
+    'author'=>'Author',
+    'authors'=>'Authors',
     'background'=>'Background',
     'deleted_successfully'=>'Deleted Successfully',
     'updated_successfully'=>'Updated Successfully',

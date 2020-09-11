@@ -44,98 +44,61 @@
                                             <label for="form_control_1">@lang('admin.description')</label>
                                         </div>
                                     </div>
-                                    <div class="portlet-body form">
-                                        <form class="form-horizontal form-bordered">
-                                            <div class="form-body">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-1">Default Editor</label>
-                                                    <div class="col-md-11">
-                                                        <div name="summernote" id="summernote_1">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-md-line-input">
+                                            <label for="summernote_1">@lang('admin.content')</label>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" required name="desc_ar"
-                                                   value="{{old('desc_ar')}}"
-                                                   id="form_control_1" placeholder="@lang('admin.desc_ar')">
-                                            <label for="form_control_1">@lang('admin.desc_ar')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" id="form_control_1" required
-                                                   name="desc_en"
-                                                   value="{{old('desc_en')}}" placeholder="@lang('admin.desc_en')">
-                                            <label for="form_control_1">@lang('admin.desc_en')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="number" class="form-control" id="form_control_1" required
-                                                   name="number_reviews"
-                                                   value="{{old('number_reviews')??0}}"
-                                                   placeholder="@lang('admin.number_reviews')">
-                                            <label for="form_control_1">@lang('admin.number_reviews')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="number" class="form-control" id="form_control_1" required
-                                                   name="number_orders"
-                                                   value="{{old('number_orders')??0}}"
-                                                   placeholder="@lang('admin.number_orders')">
-                                            <label for="form_control_1">@lang('admin.number_orders')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" id="form_control_1" required
-                                                   name="rate"
-                                                   value="{{old('rate')??0}}" placeholder="@lang('admin.rate')">
-                                            <label for="form_control_1">@lang('admin.rate')</label>
+                                            <textarea name="content"  required id="summernote_1">
+                                            </textarea>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" id="form_control_1"
-                                                   name="coupon_code"
-                                                   value="{{old('coupon_code')}}"
-                                                   placeholder="@lang('admin.coupon_code')">
-                                            <label for="form_control_1">@lang('admin.coupon_code')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="url" class="form-control" id="form_control_1" name="url"
-                                                   value="{{old('url')}}" placeholder="@lang('admin.url')">
-                                            <label for="form_control_1">@lang('admin.url')</label>
-                                        </div>
-                                    </div>
-                    {{--                <div class="col-md-6">
-                                        <div class="form-group form-md-line-input">
-                                            <label class="col-md-2 control-label"
-                                                   for="title_id">@lang('admin.product_titles')</label>
-                                            <div class="col-md-10">
-                                                <select name="title_id" class="form-control" required id="title_id">
-                                                    @foreach($titles as $item)
-                                                        <option value="{{$item->id}}">{{$item->title_ar}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>--}}
+
+
+
 
                                 </div>
 
                             </div>
 
-                                    <div class="form-group last">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label"
+                                               for="title_id">@lang('admin.category')</label>
+                                        <div class="col-md-10">
+                                            <select name="category_id" class="form-control" required id="title_id">
+                                                @foreach($categories as $item)
+                                                    <option value="{{$item->id}}">{{$item->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label"
+                                               for="title_id">@lang('admin.tags')</label>
+                                        <div class="col-md-10">
+                                            <select name="tag_id[]" class="form-control select-2" multiple id="title_id">
+                                                @foreach($tags as $item)
+                                                    <option value="{{$item->id}}" {{$article->category_id ==  $item->id ?"selected":""}}>{{$item->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label"
+                                               for="keywords">@lang('admin.keywords')</label>
+                                        <div class="col-md-10">
+
+                                            <input id="tags_1" type="text" name="keywords" data-role="tagsinput"
+                                                   class="form-control tags " placeholder="@lang('admin.keywords')"
+                                                   value="{{old('keywords')}}"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6"><div class="form-group last">
                                         <label class="control-label col-md-3">@lang('admin.image')</label>
                                         <div class="col-md-9">
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -162,7 +125,9 @@
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
-                                    </div>
+                                    </div></div>
+                            </div>
+
 
 
                             <div>
@@ -185,10 +150,10 @@
 
     @push('js')
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
-            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
-            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+{{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>--}}
+{{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>--}}
+{{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>--}}
+{{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>--}}
             <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
             <!-- END PAGE LEVEL PLUGINS -->
             <script>

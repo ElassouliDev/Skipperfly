@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\ArticleDatatable;
 use App\DataTables\TagDatatable;
+use App\Http\Requests\ArticleRequest;
 use App\Http\Requests\TagRequest;
+use App\Models\Article;
+use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends SupperController
 {
@@ -16,7 +21,7 @@ class ArticleController extends SupperController
         parent::__construct();
 
         $this->data['route'] = "{$this->data['dashboard_dir']}.article";
-        $this->data['title'] = trans('admin.tag');
+        $this->data['title'] = trans('admin.article');
         $this->data['dashboard_dir'] = $this->data['route'];
         $this->data["breadcrumbs"] = [trans( "admin.dashboard") => $this->data['url_prefix'], $this->data['title'] => $this->data['url_prefix'] . "/" . $this->data['route']];
 
@@ -27,7 +32,7 @@ class ArticleController extends SupperController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TagDatatable $datatable)
+    public function index(ArticleDatatable $datatable)
     {
 
         return $datatable->render("{$this->data['dashboard_dir']}.index", $this->data);
@@ -43,6 +48,8 @@ class ArticleController extends SupperController
     public function create()
     {
         $this->data['title'] = trans('admin.create');
+        $this->data['categories'] = Category::all();
+        $this->data['tags'] = Tag::all();
         $this->data["breadcrumbs"][$this->data['title']] = "";
         return view("{$this->data['dashboard_dir']}.create", $this->data);
 
@@ -55,9 +62,13 @@ class ArticleController extends SupperController
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request)
+    public function store(ArticleRequest $request)
     {
-        Tag::create($request->only('title'));
+        $data = $request->only('title','description','content','image','keywords','category_id');
+        $data['admin_id'] =1;
+        $article = Article::create($data);
+        $article->tags()->sync($request->tag_id);
+
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);
 
@@ -66,10 +77,10 @@ class ArticleController extends SupperController
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Tag $tag
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show(Article $article)
     {
         //
     }
@@ -77,16 +88,21 @@ class ArticleController extends SupperController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Tag $tag
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(Article $article)
     {
-       $this->data['route'] = "{$this->data['route']}.edit";
+        $this->data['route'] = "{$this->data['route']}.edit";
         $this->data['title'] = trans('admin.edit');
-        $this->data["breadcrumbs"][$tag['slug']] = "";
+        $this->data["breadcrumbs"][$article['slug']] = "";
         $this->data["breadcrumbs"][$this->data['title']] = "";
-        $this->data['tag'] = $tag;
+        $this->data['article'] = $article;
+        $this->data['categories'] = Category::all();
+        $this->data['tags'] = Tag::all();
+        $this->data['selected_tags'] = $article->tags()->pluck('id')->toArray();
+        //dd([$this->data['selected_tags'] ]);
+
 
         return view("{$this->data['dashboard_dir']}.edit", $this->data);
 
@@ -97,13 +113,16 @@ class ArticleController extends SupperController
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Tag $tag
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function update(TagRequest $request, Tag $tag)
+    public function update(ArticleRequest $request, Article $article)
     {
+        $data = $request->only('title','description','content','image','keywords','category_id','image');
 
-        $tag->update($request->only('title'));
+
+        $article->update($data);
+        $article->tags()->sync($request->tag_id);
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.updated_successfully')]);
 
@@ -113,18 +132,18 @@ class ArticleController extends SupperController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Tag $tag
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+
+    public function destroy(Article $article)
     {
 
         if (\request()->ajax()){
-            $tag->delete();
+            @Storage::delete($article->image);
+            $article->delete();
 
             return response()->json(['status' => true, 'msg' => trans('admin.deleted_successfully')]);
-
-
         }
 
         abort(404);
