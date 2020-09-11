@@ -1,0 +1,25 @@
+<?php
+return [
+    'id'=>'#',
+    'tag'=>'Tag',
+    'category'=>'Category',
+    'description'=>'Description',
+    'title'=>'Title',
+    'actions'=>'Actions',
+    'created_at'=>'Created At',
+    'dashboard'=>'Dashboard',
+    'create'=>'Create',
+    'save'=>'Save',
+    'cancel'=>'Cancel',
+    'delete'=>'Delete',
+    'edit'=>'Edit',
+    'keywords'=>'Keywords',
+    'add_to_nav'=>'Add to nav',
+    'color'=>'Color',
+    'background'=>'Background',
+    'deleted_successfully'=>'Deleted Successfully',
+    'updated_successfully'=>'Updated Successfully',
+    'added_successfully'=>'Added Successfully',
+    'confirm_delete_msg'=>'Are you wont delete :name ?',
+];
+

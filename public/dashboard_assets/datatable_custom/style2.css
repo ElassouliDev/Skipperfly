@@ -1,0 +1,44 @@
+
+.dt-buttons {
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+button.dt-button, div.dt-button, a.dt-button {
+    background: #5b9bd1 !important;
+    border-radius: 20px !important;
+    color: #f2f6f9 !important;
+    background-color: #5b9bd1 !important;
+}
+
+
+
+div.dataTables_wrapper {
+    padding: 13px 0px;
+}
+
+div.dataTables_filter {
+    float: right;
+    margin-right: 20px;
+}
+
+div.dataTables_wrapper input.form-control.input-small.input-inline {
+    border-radius: 23px;
+    width: 220px !important;
+    margin-right: 10px;
+    border-style: ridge;
+    border-width: 1.5px;
+}
+div.dataTables_filter label {
+    float: left;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.table-scrollable {
+    border: none;
+}
+
+.portlet.box > .portlet-body{
+    padding: 10px 5px;
+}
