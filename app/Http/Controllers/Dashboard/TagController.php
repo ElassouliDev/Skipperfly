@@ -44,6 +44,8 @@ class TagController extends SupperController
     {
         $this->data['title'] = trans('admin.create');
         $this->data["breadcrumbs"][$this->data['title']] = "";
+        $this->data['route'] = "{$this->data['dashboard_dir']}.create";
+
         return view("{$this->data['dashboard_dir']}.create", $this->data);
 
 
@@ -82,7 +84,7 @@ class TagController extends SupperController
      */
     public function edit(Tag $tag)
     {
-       $this->data['route'] = "{$this->data['route']}.edit";
+         $this->data['route'] = "{$this->data['route']}.edit";
         $this->data['title'] = trans('admin.edit');
         $this->data["breadcrumbs"][$tag['slug']] = "";
         $this->data["breadcrumbs"][$this->data['title']] = "";

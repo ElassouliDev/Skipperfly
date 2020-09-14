@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +64,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        ////////////// laratrust
+        'role' => \Laratrust\Middleware\LaratrustRole::class,
+        'permission' => \Laratrust\Middleware\LaratrustPermission::class,
+        'ability' => \Laratrust\Middleware\LaratrustAbility::class,
+        'admin_middleware' => AdminMiddleware::class,
     ];
 }

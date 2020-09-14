@@ -51,13 +51,14 @@
                 <li>
                     <div class="all-comment">
                         <a href="#" title="">
-                            <i class="far fa-comment-alt"></i> <span>34</span>
+                            <i class="far fa-comment-alt"></i> <span>{{$article->count_comments}}</span>
                         </a>
                     </div>
                 </li>
                 <li>
                     <div class="all-likes">
-                        <span>97</span> <i class="far fa-heart"></i>
+                        <span class="count_favorite">{{$article->count_favorite}}</span><i class="far fa-heart   {{$article->in_favorite?'active':""}} favorite_item " data-action="{{route('website.article.add_to_favorite',$article->id)}}"></i>
+
                     </div>
                 </li>
             </ul>

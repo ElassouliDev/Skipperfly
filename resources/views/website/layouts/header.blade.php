@@ -1,10 +1,16 @@
 <section class="header">
-<div class="title-header">
+<div class="title-header" style="
+    background:linear-gradient(0deg, rgb(5 5 5 / 58%), rgb(15 5 5 / 58%)),
+    url('{{isset($settings['home_image']) && !empty($settings['home_image']) ?url('storage/').'/'.$settings['home_image']:url('/website/assets/img/header.png')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+ ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <h1>Enjoy SkipperFly Blog and Make the Best Job</h1>
-                    <p>Improve Your Target Audience by Manage.</p>
+                    <h1>{{@$settings_website['home_page_image_title']}}</h1>
+                    <p>{{@$settings_website['home_page_image_desc']}}</p>
                 </div>
             </div>
         </div>
@@ -28,6 +34,15 @@
                                    href="{{route('website.category.show',$category1->slug)}}">{{$category1->title}}</a>
                             </li>
                         @endforeach
+
+                        @if(auth()->guest())
+                        <li class="nav-item">
+                            <button type="submit" class="form-control btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">@lang('admin.login')</button>
+
+                        </li>
+
+                            @endif
+
 
                     </ul>
                 </div>

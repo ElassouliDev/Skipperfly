@@ -1,6 +1,9 @@
 @extends('dashboard.layouts.index')
 
 @section('title',$title)
+@push('css')
+
+@endpush('css')
 @section('content')
 
     <div class="col-md-12 col-sm-12">
@@ -15,10 +18,38 @@
             <div class="portlet-body form">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" method="post" action="{{route('admin.store')}}"
+                        <form role="form" method="post" action="{{route('dashboard.admin.store')}}"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="form-body">
+                                <div class="col-md-12">
+                                    <div class="form-group last">
+                                        <div class="col-md-12 text-center">
+                                            <div class="avatar fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail" style="  ">
+                                                    <img
+                                                        src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
+                                                        alt="" style="    ">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"
+                                                     style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                                                <div>
+													<span class="btn default btn-file">
+													<span class="fileinput-new">
+													Select image </span>
+													<span class="fileinput-exists">
+													Change </span>
+												<input type="file"
+
+                                                                                                           name="image">
+													</span>
+
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-md-line-input">
@@ -26,6 +57,14 @@
                                                    value="{{old('name')}}" required
                                                    id="form_control_1" placeholder="@lang('admin.name')">
                                             <label for="form_control_1">@lang('admin.name')</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-md-line-input">
+                                            <input type="text" class="form-control" name="about"
+                                                   value="{{old('about')}}" required
+                                                   id="form_control_1" placeholder="@lang('admin.about')">
+                                            <label for="form_control_1">@lang('admin.about')</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

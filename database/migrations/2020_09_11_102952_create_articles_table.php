@@ -22,9 +22,10 @@ class CreateArticlesTable extends Migration
             $table->string('slug');
             $table->string('keywords')->nullable();
             $table->unsignedBigInteger('count_view')->default(0);
+            $table->unsignedBigInteger('count_favorite')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

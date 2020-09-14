@@ -1,11 +1,13 @@
 <meta charset="utf-8"/>
-<title>Coupon-@yield('title')</title>
+<title>{{@$settings_website['title']}}-@yield('title')</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="" name="description"/>
-<meta content="" name="author"/>
+<meta content="{{@$settings_website['description']}}" name="description"/>
+<meta content="{{@$settings_website['title']}}" name="author"/>
+<meta content="{{@$settings_website['title']}}" name="title"/>
+<meta content="{{@$settings_website['keywords']}}" name="keywords"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 <link href="{{asset('dashboard_assets/global/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -31,7 +33,7 @@
 <link href="{{asset('dashboard_assets/admin/layout4/css/themes/light.css')}}" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="{{asset('dashboard_assets/admin/layout4/css/custom.css')}}" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="{{isset($settings_website['logo'])&& !empty($settings_website['logo'])?url('storage/').'/'.$settings_website['logo']:url('/website/assets/img/Logo1.svg')}}"/>
 <link rel="stylesheet" type="text/css" href="{{url('/dashboard_assets')}}/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>
 
 
@@ -72,6 +74,27 @@
         font-weight: 500;
         text-align: center;
         padding: 15px;
+    }
+</style>
+<style>
+    .avatar.fileinput .thumbnail{
+        width: 100px;
+        height: 100px;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 50%;
+        outline: none;
+    }
+    .avatar.fileinput {
+               margin-bottom: 30px;
+    }
+    .avatar.fileinput .thumbnail > img{
+        width: 100px;
+        height: 100px;
+        padding: 2px;
+        border-radius: 50%;
+
+
     }
 </style>
 

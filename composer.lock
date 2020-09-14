@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24ffb55f8791f4b959a44495d57470e3",
+    "content-hash": "04ebfa1c398da6d99bef2c4b977c7375",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -699,6 +699,51 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "kkszymanowski/traitor",
+            "version": "0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KKSzymanowski/Traitor.git",
+                "reference": "9770fc7de72ff585601dc9c42b31715d9fc40a24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KKSzymanowski/Traitor/zipball/9770fc7de72ff585601dc9c42b31715d9fc40a24",
+                "reference": "9770fc7de72ff585601dc9c42b31715d9fc40a24",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "^1.0|^2.0|^3.0|^4.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Traitor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kuba Szymanowski",
+                    "email": "kuba.szymanowski@inf24.pl"
+                }
+            ],
+            "description": "Add a trait use statement to existing PHP class",
+            "keywords": [
+                "add",
+                "php",
+                "trait"
+            ],
+            "time": "2018-04-19T12:24:36+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v7.28.1",
             "source": {
@@ -919,6 +964,61 @@
                 "psysh"
             ],
             "time": "2020-08-11T19:28:08+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "f5398544a9cd4804a42d09ce51735e37cd51ea2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/f5398544a9cd4804a42d09ce51735e37cd51ea2d",
+                "reference": "f5398544a9cd4804a42d09ce51735e37cd51ea2d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^7.0",
+                "illuminate/filesystem": "^7.0",
+                "illuminate/support": "^7.0",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "time": "2020-09-11T15:31:52+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -1665,16 +1765,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.39.1",
+            "version": "2.39.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "7af467873250583cc967a59ee9df29fabab193c1"
+                "reference": "326efde1bc09077a26cb77f6e2e32e13f06c27f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/7af467873250583cc967a59ee9df29fabab193c1",
-                "reference": "7af467873250583cc967a59ee9df29fabab193c1",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/326efde1bc09077a26cb77f6e2e32e13f06c27f2",
+                "reference": "326efde1bc09077a26cb77f6e2e32e13f06c27f2",
                 "shasum": ""
             },
             "require": {
@@ -1740,7 +1840,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-09-04T13:11:37+00:00"
+            "time": "2020-09-10T12:16:42+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2506,16 +2606,16 @@
         },
         {
             "name": "ramsey/collection",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/collection.git",
-                "reference": "044184884e3c803e4cbb6451386cb71562939b18"
+                "reference": "24d93aefb2cd786b7edd9f45b554aea20b28b9b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/collection/zipball/044184884e3c803e4cbb6451386cb71562939b18",
-                "reference": "044184884e3c803e4cbb6451386cb71562939b18",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/24d93aefb2cd786b7edd9f45b554aea20b28b9b1",
+                "reference": "24d93aefb2cd786b7edd9f45b554aea20b28b9b1",
                 "shasum": ""
             },
             "require": {
@@ -2565,7 +2665,7 @@
                 "queue",
                 "set"
             ],
-            "time": "2020-08-11T00:57:21+00:00"
+            "time": "2020-09-10T20:58:17+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -2647,6 +2747,71 @@
                 "uuid"
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "santigarcor/laratrust",
+            "version": "6.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/santigarcor/laratrust.git",
+                "reference": "ed1ee854c08931c1d749afea7d1515b8c780daa4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/ed1ee854c08931c1d749afea7d1515b8c780daa4",
+                "reference": "ed1ee854c08931c1d749afea7d1515b8c780daa4",
+                "shasum": ""
+            },
+            "require": {
+                "kkszymanowski/traitor": "^0.2.0",
+                "laravel/framework": "~6.0|~7.0|~8.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "4.*|5.*|6.*",
+                "phpunit/phpunit": "^7.5.15|^8.4|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laratrust\\LaratrustServiceProvider"
+                    ],
+                    "aliases": {
+                        "Laratrust": "Laratrust\\LaratrustFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laratrust\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Santiago Garcia",
+                    "homepage": "http://santigarcor.me"
+                }
+            ],
+            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
+            "keywords": [
+                "Teams",
+                "acl",
+                "authorization",
+                "laratrust",
+                "laravel",
+                "multiusers",
+                "permissions",
+                "php",
+                "rbac",
+                "roles"
+            ],
+            "time": "2020-09-11T17:45:20+00:00"
         },
         {
             "name": "spatie/laravel-sluggable",

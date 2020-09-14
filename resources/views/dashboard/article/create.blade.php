@@ -80,11 +80,13 @@
                                         <div class="col-md-10">
                                             <select name="tag_id[]" class="form-control select-2" multiple id="title_id">
                                                 @foreach($tags as $item)
-                                                    <option value="{{$item->id}}" {{$article->category_id ==  $item->id ?"selected":""}}>{{$item->title}}</option>
+                                                    <option value="{{$item->id}}" >{{$item->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
+
+
                                     <div class="form-group form-md-line-input">
                                         <label class="col-md-2 control-label"
                                                for="keywords">@lang('admin.keywords')</label>
@@ -95,7 +97,20 @@
                                                    value="{{old('keywords')}}"/>
                                         </div>
                                     </div>
+                                    <div class="form-group  form-md-line-input">
+                                        <label for="form_control_1">@lang('admin.send_mail') : </label>
 
+
+                                        <div
+                                            class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-on"
+                                            style="width: 101px;">
+
+                                            <div class="bootstrap-switch-container" style="width: 148px; margin-left: 0px;">
+
+                                                <input type="checkbox" name="send_mail" class="make-switch"
+                                                       data-on-text="ON" data-off-color="danger"></div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6"><div class="form-group last">
@@ -115,17 +130,17 @@
 													Select image </span>
 													<span class="fileinput-exists">
 													Change </span>
-													<input type="hidden" value="" name="image_name"><input type="file" required
+												<input type="file" required
 
                                                                                                            name="image">
 													</span>
-                                                    {{--                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput">--}}
-                                                    {{--                                                    Remove </a>--}}
+
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
-                                    </div></div>
+                                    </div>
+                                </div>
                             </div>
 
 

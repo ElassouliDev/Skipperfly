@@ -60,7 +60,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END PAGE HEAD -->
             <!-- BEGIN PAGE BREADCRUMB -->
 
-            <ul class="page-breadcrumb breadcrumb">
+   {{--         <ul class="page-breadcrumb breadcrumb">
                 @if(isset($breadcrumbs))
                     @foreach($breadcrumbs as $name=>$url)
 
@@ -71,18 +71,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="{{$url??"javascript:;"}}">{{$name}}</a><i class="fa fa-circle"></i>
                             @endif
                         </li>
-                        {{--                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>--}}
-                        {{--                    <li class="breadcrumb-item"><a href="category.html">Categories</a></li>--}}
-                        {{--                    <li class="breadcrumb-item active">Add Category</li>--}}
+
                     @endforeach
                 @endif
-                {{--                <li>--}}
-                {{--                    <a href="javascript:;">Home</a><i class="fa fa-circle"></i>--}}
-                {{--                </li>--}}
-                {{--                <li class="active">--}}
-                {{--                    Dashboard--}}
-                {{--                </li>--}}
-            </ul>
+            </ul>--}}
             <!-- END PAGE BREADCRUMB -->
             <!-- BEGIN PAGE CONTENT INNER -->
         @include('dashboard.layouts.messages')
@@ -95,14 +87,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-{{--<div class="modal fade slide-up disable-scroll" id="change-password" role="dialog" aria-hidden="false">
+<div class="modal fade slide-up disable-scroll" id="change-password" role="dialog" aria-hidden="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content-wrapper">
             <div class="modal-content">
                 <div class="modal-header clearfix text-left">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                             class="pg-close fs-14"></i></button>
-                    <h5>تعديل كلمة المرور</h5>
+                    <h5>@lang('admin.Edit password')</h5>
                 </div>
                 <div class="modal-body">
                     <form role="form" autocomplete="off">
@@ -111,32 +103,32 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
-                                        <label>كلمة المرور الحالية:</label>
-                                        <input name="current_password" type="password" class="form-control">
+                                        <label>@lang('admin.Current password'):</label>
+                                        <input name="current_password" type="password" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
-                                        <label>كلمة المرور الجديدة:</label>
-                                        <input name="new_password" type="password" class="form-control">
+                                        <label>@lang('admin.New password') :</label>
+                                        <input name="new_password" type="password" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
-                                        <label>أعد إدخال كلمة المرور الجديدة:</label>
-                                        <input name="new_password_confirmation" type="password" class="form-control">
+                                        <label>@lang('admin.Confirm new password') :</label>
+                                        <input name="new_password_confirmation" type="password" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 m-t-10 sm-m-t-10">
-                                <button type="submit" class="btn btn-primary btn-block m-t-5">حفظ البيانات</button>
-                                <button type="reset" class="hide"></button>
+                                <button type="submit" class="btn btn-primary  m-t-5">@lang('admin.save')</button>
+                                <button type="reset" class="btn btn-danger  m-t-5"  class="close" data-dismiss="modal" aria-hidden="true" >@lang('admin.cancel')</button>
                             </div>
                         </div>
                     </form>
@@ -144,8 +136,8 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
         </div>
     </div>
-</div>--}}
-{{--<div class="modal fade slide-up disable-scroll" id="edit-profile" role="dialog"s>
+</div>
+<div class="modal fade slide-up disable-scroll" id="edit-profile" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content-wrapper">
             <div class="modal-content">
@@ -164,12 +156,56 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="form-group-attached">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <div class="form-group last">
+                                        <div class="col-md-12 text-center">
+                                            <div class="avatar fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail" >
+                                                    <img
+                                                        src="{{auth()->user()->image_url}}"
+                                                        alt="{{auth()->user()->nam}}" >
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"
+                                                     style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                                                <div>
+													<span class="btn default btn-file">
+													<span class="fileinput-new">
+													Change </span>
+													<span class="fileinput-exists">
+													Change </span>
+												<input type="file"
+
+                                                       name="image">
+													</span>
+
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="form-group form-group-default">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <label>@lang('admin.name'):</label>
                                                 <input name="name" type="text" class="form-control"
                                                        value="{{auth()->user()->name}}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-default">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <label>@lang('admin.about'):</label>
+                                                <input name="about" type="text" class="form-control"
+                                                       value="{{auth()->user()->about}}">
                                             </div>
                                         </div>
                                     </div>
@@ -189,14 +225,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                             <div class="row">
-
-                                <div class="row">
-                                    <div class="col-md-12 m-t-10 sm-m-t-10 m-auto btn-div">
-                                        <button type="submit"
-                                                class="btn btn-primary">@lang('admin.save')</button>
-                                        <button type="reset" class="btn btn-danger"
-                                                data-dismiss="modal">@lang('admin.cancel')</button>
-                                    </div>
+                                <div class="col-md-12 m-t-10 sm-m-t-10">
+                                    <button type="submit" class="btn btn-primary  m-t-5">@lang('admin.save')</button>
+                                    <button type="reset" class="btn btn-danger  m-t-5"  class="close" data-dismiss="modal" aria-hidden="true" >@lang('admin.cancel')</button>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +237,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
     </div>
 
-</div>>--}}
+</div>
 <form style="display: none" method="post" id="delete_form">
     @method('DELETE')
 
@@ -280,49 +311,58 @@ License: You must have a valid license purchased only from themeforest(the above
         event.preventDefault();
         var $this = $(this);
         toastr.remove();
-        toastr.warning("@lang('error.in_progress')");
+        toastr.warning("@lang('admin.in_progress')");
 
 
-        var posted_data = $(this).serialize();//new FormData(this),
+        // var posted_data = new FormData(this);//$(this).serialize();//new FormData(this),
+        var posted_data = new  FormData(this); //$(this).serialize();//new FormData(this),
             url = $this.attr('action');
 
-
-            $.post(url , posted_data,function (response) {
+        $.ajax({
+            url: url,
+            data: posted_data,
+            processData: false,
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            type: 'POST',
+            success: function ( response ) {
                 toastr.remove();
                 toastr.options.timeOut = 2000;
                 toastr.success(response.message);
                 $('.name_admin').html(response.user.name);
+                $('.avatar_user img').attr('src',response.user.image_url);
                 $('#edit-profile').modal('hide');
-
-            }).fail(function (response , exception) {
-               let  message = '';
+            },
+            fail:function (response , exception) {
+                let  message = '';
                 toastr.remove();
 
-                    for (var error in response.responseJSON.errors) {
-                        for (var line in response.responseJSON.errors[error]) {
-                            message += "\n" + response.responseJSON.errors[error][line];
-                        }
+                for (var error in response.responseJSON.errors) {
+                    for (var line in response.responseJSON.errors[error]) {
+                        message += "\n" + response.responseJSON.errors[error][line];
                     }
+                }
                 toastr.options.timeOut = 10000;
 
                 toastr.error(message);
 
 
-            });
+            }
+        });
+
 
 
 
     });
 
     // $('.name_admin').text(11);
-    /*   $("#change-password").submit(function (event) {
+      $("#change-password").submit(function (event) {
           event.preventDefault();
           var $this = $(this);
           toastr.remove();
-          toastr.warning("@lang('error.in_progress')");
+          toastr.warning("@lang('admin.in_progress')");
 
         var posted_data = $this.find('form').serialize();
-       $.post("{{('change-password')}}", posted_data,
+       $.post("{{route('change-password')}}", posted_data,
             function (response, status) {
                 $this.find('[type="reset"]').click();
                 $this.modal('hide');
@@ -348,7 +388,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 toastr.error(message);
 
             });
-    });*/
+    });
 
 
 

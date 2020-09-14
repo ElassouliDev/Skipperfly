@@ -13,14 +13,16 @@ class AdminSeeder extends Seeder
     {
 
         \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
-        \App\Models\Admin::truncate();
-        \App\Models\Admin::create([
+        \App\User::truncate();
+        $user = \App\User::create([
             'name'=>"Supper Authors",
             'about'=>"Traveler",
             'password'=>"123456789",
             'email'=>"admin@admin.com",
 
         ]);
+
+        $user->syncRoles(['superadministrator']);
 
         \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
     }

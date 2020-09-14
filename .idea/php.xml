@@ -120,6 +120,9 @@
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-fractal" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/santigarcor/laratrust" />
+      <path value="$PROJECT_DIR$/vendor/kkszymanowski/traitor" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

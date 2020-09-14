@@ -10,11 +10,13 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-class HomeController extends Controller
+class HomeController extends SupperController
 {
 
     public function __construct()
     {
+
+        parent::__construct();
         $this->data['authors'] = Admin::all();
         $this->data['tags'] = Tag::all();
         $this->data['categories'] = Category::all();
@@ -31,6 +33,7 @@ class HomeController extends Controller
         $this->data['last_article'] = Article::latest()->take(3)->get();
         $this->data['articles'] = Article::paginate(8);
         $this->data['articles_paginate_data'] =    Arr::except($this->data['articles']->toArray(),['data']);
+        $this->data['title'] = trans('admin.home');
 
    //    dd([$this->data['articles'] ,$this->data['articles_paginate_data']]);
        return view('website.index' , $this->data);
@@ -42,7 +45,9 @@ class HomeController extends Controller
 
         $this->data['category'] = Category::where('slug',$slug)->firstOrFail();
         $this->data['last_article'] = Article::latest()->take(3)->get();
-        $this->data['articles'] = Article::where('category_id',$this->data['category']->id)->paginate(8);
+       $this->data['title'] = $this->data['category']->title;
+
+       $this->data['articles'] = Article::where('category_id',$this->data['category']->id)->paginate(8);
         $this->data['articles_paginate_data'] =    Arr::except($this->data['articles']->toArray(),['data']);
 
        return view('website.index' , $this->data);

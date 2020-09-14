@@ -11,11 +11,12 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-class ArticleController extends Controller
+class ArticleController extends SupperController
 {
 
     public function __construct()
     {
+        parent::__construct();
         $this->data['authors'] = Admin::all();
         $this->data['tags'] = Tag::all();
         $this->data['categories'] = Category::all();
@@ -29,10 +30,11 @@ class ArticleController extends Controller
     public  function  show($slug){
 
 
-        $this->data['article'] = Article::where('slug',$slug)->firstOrFail();
+        $this->data['article'] = Article::with('comments')->where('slug',$slug)->firstOrFail();
         $this->data['related_articles'] = Article::where('category_id',$this->data['article']->category_id)->take(3)->get();
         $this->data['more_articles'] = Article::inRandomOrder()->take(3)->get();
-
+        $this->data['title'] = $this->data['article']->title;
+//dd($article->toArray());
 
         $this->data['article']->increment('count_view');
 
@@ -40,4 +42,27 @@ class ArticleController extends Controller
        return view('website.blog' , $this->data);
    }
 
+    public  function  add_to_favorite(Request $request ,Article $article){
+
+
+        if ($request->ajax()){
+            if ($request->is_action== true){
+                $article->decrement('count_favorite');
+            }else{
+                $article->increment('count_favorite');
+            }
+
+
+            if (auth()->user()){
+                $article->favorite()->toggle(auth()->user());
+            }
+
+
+
+            return response(['status'=>true, 'count_favorite'=>$article->count_favorite]);
+        }
+
+        abort(403);
+
+    }
 }

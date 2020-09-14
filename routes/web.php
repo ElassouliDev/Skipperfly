@@ -13,25 +13,56 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(function () {
-
-    Route::resource('tag','TagController')->except('show');
-    Route::resource('category','CategoryController')->except('show');
-    Route::resource('article','ArticleController')->except('show');
+    Route::get('/login', 'AuthController@login_page');
+    Route::post('/login', 'AuthController@login')->name('login');
 
 
-//    Route::get('/', function () {
-//        $route = "";
-//        $title = "";
-//        return view('dashboard.layouts.index' , compact('route' ,'title'));
-//    })->name('index');
+
+  Route::middleware( ['admin_middleware','role:superadministrator'])->group(function (){
+         Route::get('/', 'TagController@index')->name('index');
+      Route::post('/logout', 'AuthController@logout')->name('logout');
+
+      Route::resource('tag','TagController')->except('show');
+      Route::resource('category','CategoryController')->except('show');
+      Route::resource('article','ArticleController')->except('show');
+      Route::resource('admin','AdminController')->except('show');
+      Route::resource('user','UserController')->except('show');
+      Route::resource('setting', 'SettingController')->only('index','store');
+  });
+
+
 });
+
+Route::namespace('Dashboard')->middleware( 'auth')->group(function () {
+    Route::put('/edit-profile', 'AuthController@edit_profile')->name('edit_profile');
+    Route::put('/change-password', 'AuthController@change_password')->name('change-password');
+});
+
 
 Route::namespace('Website')->name('website.')->group(function () {
-    Route::get('', 'HomeController@index')->name('index');
+    Route::get('/', 'HomeController@index')->name('index');
     Route::get('/article/{slug}', 'ArticleController@show')->name('article.show');
+    Route::post('/article/add_to_favorite/{article}', 'ArticleController@add_to_favorite')->name('article.add_to_favorite');
+
     Route::get('/category/{slug}', 'HomeController@show_category')->name('category.show');
     Route::get('/tag/{slug}', 'HomeController@show_tag')->name('tag.show');
+    Route::post('/subscribe/create', 'SubscribeController@store')->name('subscribe.create');
+
+    Route::post('/comment/create', 'CommentController@store')->name('comment.create');
+    Route::post('/comment/add_to_favorite/{comment}', 'CommentController@add_to_favorite')->name('comment.add_to_favorite');
+
+    Route::post('/login', 'AuthController@login')->name('login');
+    Route::post('/register', 'AuthController@register')->name('register');
+    Route::post('/logout', 'AuthController@logout')->name('logout');
+
 
 
 });
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+

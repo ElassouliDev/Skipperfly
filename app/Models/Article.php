@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ class Article extends Model
     use HasSlug;
 
     protected $guarded = [] ;
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url' , 'count_comments'  ,'in_favorite'];
 
 
     public function getSlugOptions(): SlugOptions
@@ -35,6 +36,9 @@ class Article extends Model
     {
         return Carbon::parse($value)->format('F d,Y');
     }
+
+
+
 
     public function setImageAttribute($value)
     {
@@ -62,5 +66,23 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public  function  comments(){
 
+        return $this->hasMany(Comment::class ,'article_id' , 'id') ;
+    }
+
+    public function getCountCommentsAttribute()
+    {
+        return  $this->comments()->count();
+    }
+
+
+    public  function  favorite(){
+        return $this->belongsToMany(User::class,'favorite_article' );
+    }
+
+
+    public  function  getInFavoriteAttribute(){
+        return auth()->user()?$this->favorite()->where('id', auth()->id())->count() >0:false;
+    }
 }

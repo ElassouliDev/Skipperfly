@@ -1,6 +1,6 @@
 @extends('dashboard.auth.auth_layout')
 @section('content')
-    <form class="login-form" action="{{route('login')}}" method="post">
+    <form class="login-form" action="{{route('dashboard.login')}}" method="post">
         @csrf
         <h3 class="form-title">@lang('admin.login')</h3>
         <div class="alert alert-danger display-hide">
@@ -35,11 +35,7 @@
 
         </div>
 
-        <div class="forget-password">
-            <h4><a href="{{route('password.request')}}" class="text-default" id="forget-password">
-                    @lang('admin.Forgot your password') </a></h4>
 
-        </div>
 
     </form>
 

@@ -1,16 +1,13 @@
-<div class="page-header navbar navbar-fixed-top">
+    <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="#">
-{{--            <a href="{{route('dashboard')}}">--}}
-                <img src="{{asset('public/dashboard_assets/admin/layout4/img/logo-light.png')}}" alt="logo" class="logo-default"/>
-{{--                    <h2 class="text-center bold" class="logo-default">Coupon App</h2>--}}
+                <img src="{{isset($settings_website['logo'])&& !empty($settings_website['logo'])?url('storage/').'/'.$settings_website['logo']:url('/website/assets/img/Logo1.svg')}}" alt="logo" class="logo-default"  width="100" height="30"/>
             </a>
 
             <div class="menu-toggler sidebar-toggler">
-                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
         </div>
         <!-- END LOGO -->
@@ -27,12 +24,12 @@
 
 
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li class="dropdown dropdown-user dropdown-dark">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<span class="username username-hide-on-mobile name_admin">
-						{{auth()->user()->name??'admin'}} </span>
+                    <li class="dropdown dropdown-user dropdown-dark  ">
+                        <a href="javascript:;" class="dropdown-toggle avatar_user" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<span class="username username-hide-on-mobile name_admin ">
+						{{auth()->user()->name}} </span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                            <img alt="" class="img-circle" src="{{asset('public/dashboard_assets/admin/layout4/img/avatar9.jpg')}}"/>
+                            <img alt="" class="img-circle" src="{{auth()->user()->image_url}}" width="50"/>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
 
@@ -61,10 +58,10 @@
                                                      document.getElementById('logout-form').submit();"
                                 >
                                     <i class="icon-logout"></i> @lang('admin.logout_title')</a>
-{{--
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+                                <form id="logout-form" action="{{ route('dashboard.logout') }}" method="POST" style="display: none;">
                                     @csrf
-                                </form>--}}
+                                </form>
                             </li>
 
                             <li class="divider">

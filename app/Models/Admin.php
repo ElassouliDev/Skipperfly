@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class Admin extends Authenticatable
 {
     use  Notifiable;
+    use SoftDeletes;
     protected $guarded =[];
 protected $appends = ['image_url'];
 
@@ -23,8 +25,7 @@ protected $appends = ['image_url'];
     {
         return $this->image ?
             url('storage/' . $this->image):
-            url('website/assets/img/author.png')
-         ;
+            url('website/assets/img/author.png');
     }
 
     public function setImageAttribute($value)

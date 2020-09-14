@@ -2,10 +2,13 @@
 
 namespace App\DataTables;
 
+use App\Models\Admin;
 use App\User;
 use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\Html\Editor\Editor;
+use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class UserDatatable extends DataTable
@@ -21,28 +24,24 @@ class UserDatatable extends DataTable
         return datatables()
             ->of($query)
             ->addIndexColumn()
-            ->addColumn('action', 'dashboard.users.action')
-            ->editColumn('created_at', function ($item) {
-                return Carbon::parse($item->created_at)->format('d-m-Y');
-            })->addColumn('status', function ($item) {
-                return $item->is_blocked == false ?
-                     '<span class="label label-success">
-									فعال </span>' :
-                    '<span class="label label-warning">
-									غير فعال </span>   ';
-            })->rawColumns([ 'action' , 'status']);
-
+            ->addColumn('action', 'dashboard.user.action')
+            ->editColumn('created_at',function ($item){
+                return Carbon::parse($item->created_at)->format('F d,Y');
+            })
+            ->editColumn('image_url',function ($item){
+                return "<img src ='{$item->image_url}' width='100' height='50'/>";
+            })            ->rawColumns(['action' , 'image_url']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Models\Admin $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(User $model)
     {
-        return $model->get();
+        return $model->user()->get();
     }
 
     /**
@@ -53,55 +52,20 @@ class UserDatatable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('copoundatatable-table')
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            ->dom('Bfrtip')
-            ->orderBy(0)
-            ->buttons(
-                Button::make('create'),
-               // Button::make('export'),
-                Button::make('excel'),
+                    ->setTableId('Userdatatable-table')
+                    ->columns($this->getColumns())
+                    ->minifiedAjax()
+                    ->dom('Bfrtip')
+                    ->orderBy(3)
+                    ->buttons(
+                        Button::make('create')//,
+      //                  Button::make('excel'),
 
-                Button::make('print')//,
+                        // Button::make('export'),
+                //        Button::make('print')//,
 //                        Button::make('reset'),
 //                        Button::make('reload')
-            )
-            ->language(
-                [
-                    'sProcessing' => trans('datatables.sProcessing'),
-                    'sLengthMenu' => trans('datatables.sLengthMenu'),
-                    'sZeroRecords' => trans('datatables.sZeroRecords'),
-                    'sEmptyTable' => trans('datatables.sEmptyTable'),
-                    'sInfo' => trans('datatables.sInfo'),
-                    'sInfoEmpty' => trans('datatables.sInfoEmpty'),
-                    'sInfoFiltered' => trans('datatables.sInfoFiltered'),
-                    'sInfoPostFix' => trans('datatables.sInfoPostFix'),
-                    'sSearch' => trans('datatables.sSearch'),
-                    'sUrl' => trans('datatables.sUrl'),
-                    'sInfoThousands' => trans('datatables.sInfoThousands'),
-                    // 'print'     => trans('datatables.print'),
-                    'sLoadingRecords' => trans('datatables.sLoadingRecords'),
-                    'oPaginate' => [
-                        'sFirst' => trans('datatables.sFirst'),
-                        'sLast' => trans('datatables.sLast'),
-                        'sNext' => trans('datatables.sNext'),
-                        'sPrevious' => trans('datatables.sPrevious'),
-                    ],
-                    'oAria' => [
-                        'sSortAscending' => trans('datatables.sSortAscending'),
-                        'sSortDescending' => trans('datatables.sSortDescending'),
-                    ], 'buttons' => [
-                    'create' => trans('datatables.add'),
-                    'print' => trans('datatables.print'),
-                    'reload' => trans('datatables.reload'),
-                    'export' => trans('datatables.export'),
-                    'csv' => trans('datatables.export_csv'),
-                    'pdf' => trans('datatables.export_pdf'),
-                    'excel' => trans('datatables.export_excel'),
-                ],
-                ]
-            );;
+                    );
     }
 
     /**
@@ -113,13 +77,19 @@ class UserDatatable extends DataTable
     {
         return [
 //            Column::make('id')->title(trans('admin.id'))->width(30),
+            Column::make('image_url')->title(trans('admin.image'))
+                ->searchable(false)->orderable(false)->width(100)
+                ->exportable(false)
+                ->printable(false)
+                ->addClass('text-center')
+            ,
             Column::make('name')->title(trans('admin.name')),
             Column::make('email')->title(trans('admin.email')),
-            Column::make('status')->title(trans('admin.status'))->width(50)->addClass('text-center'),
+            Column::make('created_at')->title(trans('admin.created_at'))->addClass('text-center'),
             Column::computed('action')->title(trans('admin.actions'))
                 ->exportable(false)
                 ->printable(false)
-                ->width(50)
+                ->width(200)
                 ->addClass('text-center'),
 
         ];
@@ -132,6 +102,6 @@ class UserDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'Ads_' . date('YmdHis');
+        return 'Article_' . date('YmdHis');
     }
 }

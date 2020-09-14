@@ -45,6 +45,8 @@ class CategoryController extends SupperController
     {
         $this->data['title'] = trans('admin.create');
         $this->data["breadcrumbs"][$this->data['title']] = "";
+        $this->data['route'] = "{$this->data['dashboard_dir']}.create";
+
         return view("{$this->data['dashboard_dir']}.create", $this->data);
 
 
