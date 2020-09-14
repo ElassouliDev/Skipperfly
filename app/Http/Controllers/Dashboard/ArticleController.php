@@ -65,9 +65,17 @@ class ArticleController extends SupperController
     public function store(ArticleRequest $request)
     {
         $data = $request->only('title','description','content','image','keywords','category_id');
-        $data['admin_id'] =1;
+        $data['admin_id'] =auth()->id();
         $article = Article::create($data);
         $article->tags()->sync($request->tag_id);
+
+        if ($request->has('send_mail')){
+            \App\Models\Subscribe::chunk(50,function ($data) use ($article){
+
+                dispatch(new  \App\Jobs\SendNewArticleMailJob($data,$article));
+
+            });
+        }
 
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);

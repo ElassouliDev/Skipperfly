@@ -39,6 +39,8 @@ class AuthController extends SupperController
             $user =  User::create($request->only('name','email','password'));
             $user->syncRoles(['user']);
 
+            dispatch(new  \App\Jobs\SendWelcomeMailJob($user));
+
             Auth::loginUsingId($user->id);
 
             return  \response()->json(['status'=>true , 'message' =>trans('admin.create account is done')]);

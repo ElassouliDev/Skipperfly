@@ -4,7 +4,7 @@
             <div class="comment-meta">
                 <div class="comment-author">
                     <img src="{{$comment->image}}">
-                    <span class="say">{{$comment->user()?$comment->user->name :$comment->name}}</span>
+                    <span class="say">{{$comment->user?$comment->user->name :$comment->name}}</span>
                 </div>
                 <div class="comment-metadata">
                     <span class="data">{{$comment->created_at}}</span>

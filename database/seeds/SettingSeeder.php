@@ -15,11 +15,11 @@ class SettingSeeder extends Seeder
         \App\Models\Setting::truncate();
         \App\Models\Setting::create([
             'key'=>'title',
-            'value'=>'Skipper',
+            'value'=>'Skipperfly',
         ]);
         \App\Models\Setting::create([
             'key'=>'title',
-            'description'=>'Skipper Skipper',
+            'description'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'google_play_link',

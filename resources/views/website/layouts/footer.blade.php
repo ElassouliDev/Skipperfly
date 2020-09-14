@@ -7,7 +7,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <div class="logo-footer">
-                                <a href="#" title="">
+                                <a href="#" title="{{@$settings_website['title']}}}">
                                     <img src="{{isset($settings_website['logo'])&& !empty($settings_website['logo'])?url('storage/').'/'.$settings_website['logo']:url('/website/assets/img/Logo1.svg')}}" alt="{{@$settings_website['title']}}" height="60"
                                          width="234">
                                 </a>

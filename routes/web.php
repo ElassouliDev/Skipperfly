@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Article;
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/send_email', function (){
+//    $user = User::first();
+//    $article = Article::first();
+////    \Mail::to($user->email)
+////        ->send(new \App\Mail\ArticleEmail($user , $article))
+////
+////    ;
+//
+//    \Mail::to($user->email)
+//        ->send(new \App\Mail\WelcomeEmail($user))
+//
+//    ;
+//
+//    \App\Models\Subscribe::chunk(50,function ($data) use ($article){
+//
+//        dispatch(new  \App\Jobs\SendNewArticleMailJob($data,$article));
+//
+//    });
+//});
+
 
 Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/login', 'AuthController@login_page');
@@ -21,7 +43,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(fu
 
 
   Route::middleware( ['admin_middleware','role:superadministrator'])->group(function (){
-         Route::get('/', 'TagController@index')->name('index');
+         Route::get('/', 'HomeController@index')->name('index');
       Route::post('/logout', 'AuthController@logout')->name('logout');
 
       Route::resource('tag','TagController')->except('show');

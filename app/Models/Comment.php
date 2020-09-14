@@ -14,7 +14,7 @@ class Comment extends Model
 
     public function getImageAttribute()
     {
-        return $this->user() ? $this->user->image_url:  url('website/assets/img/author.png');
+        return $this->user ? $this->user->image_url:  url('website/assets/img/author.png');
     }
 
    public function getCreatedAtDateAttribute()
