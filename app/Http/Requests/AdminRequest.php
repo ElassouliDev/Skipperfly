@@ -31,7 +31,7 @@ class AdminRequest extends FormRequest
             'name' => 'required|string|max:100',
             'about' => 'nullable|string|max:100',
             'image' => 'nullable|image',
-            'email' => ['required', 'string', 'email', 'max:191', 'unique:admins'.$is_update_email],
+            'email' => ['required', 'string', 'email', 'max:191', 'unique:users'.$is_update_email],
             'password' => $is_required.'|string|min:6'
             ];
     }

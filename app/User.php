@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,9 @@ class User extends Authenticatable
 {
     use Notifiable;
     use LaratrustUserTrait; // add this trait to your user model
+
+    use SoftDeletes;
+
     protected $appends = ['image_url'];
 
     /**

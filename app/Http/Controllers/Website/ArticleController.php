@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -17,12 +17,11 @@ class ArticleController extends SupperController
     public function __construct()
     {
         parent::__construct();
-        $this->data['authors'] = Admin::all();
-        $this->data['tags'] = Tag::all();
-        $this->data['categories'] = Category::all();
-        $this->data['nav_categories'] = Category::where('in_nav',true)->get();
-        $this->data['nav_categories'] = Category::where('in_nav',true)->get();
-
+//        $this->data['authors'] = User::admin()->get();
+//        $this->data['tags'] = Tag::all();
+//        $this->data['categories'] = Category::all();
+//        $this->data['nav_categories'] = Category::where('in_nav',true)->get();
+//
 
 
     }
@@ -30,7 +29,10 @@ class ArticleController extends SupperController
     public  function  show($slug){
 
 
-        $this->data['article'] = Article::with('comments')->where('slug',$slug)->firstOrFail();
+        $this->data['article'] = Article::whereHas('translations',function ($query)use ( $slug){
+            $query->where('slug',$slug);
+        })->firstOrFail();
+
         $this->data['related_articles'] = Article::where('category_id',$this->data['article']->category_id)->take(3)->get();
         $this->data['more_articles'] = Article::inRandomOrder()->take(3)->get();
         $this->data['title'] = $this->data['article']->title;

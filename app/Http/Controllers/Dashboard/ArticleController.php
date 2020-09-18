@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends SupperController
@@ -64,19 +65,31 @@ class ArticleController extends SupperController
      */
     public function store(ArticleRequest $request)
     {
-        $data = $request->only('title','description','content','image','keywords','category_id');
-        $data['admin_id'] =auth()->id();
+
+//        dd($request->only('en'));
+        if (!$request->has('ar.title') || empty($request->input('ar.title')))
+            $data = $request->only('en', 'image', 'category_id');
+        else
+            $data = $request->only('en', 'ar','image', 'category_id');
+
+//        $data = $request->only('en','image','category_id');
+//        $data = $request->only('title','description','content','image','keywords','category_id');
+        $data['user_id'] =auth()->id();
         $article = Article::create($data);
         $article->tags()->sync($request->tag_id);
 
-        if ($request->has('send_mail')){
+        if ( $request->has('send_mail')){
             \App\Models\Subscribe::chunk(50,function ($data) use ($article){
 
                 dispatch(new  \App\Jobs\SendNewArticleMailJob($data,$article));
 
             });
+
+            //TODO :: add artisan call to event
+//            Artisan::call('schedule:run');
         }
 
+//        dd(1);
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);
 
@@ -126,7 +139,13 @@ class ArticleController extends SupperController
      */
     public function update(ArticleRequest $request, Article $article)
     {
-        $data = $request->only('title','description','content','image','keywords','category_id','image');
+
+//        $data = $request->only('title','description','content','image','keywords','category_id');
+//        $data = $request->only('en','image','category_id');
+        if (!$request->has('ar.title') || empty($request->input('ar.title')))
+            $data = $request->only('en', 'image', 'category_id');
+        else
+            $data = $request->only('en', 'ar','image', 'category_id');
 
 
         $article->update($data);

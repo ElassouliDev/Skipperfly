@@ -25,10 +25,16 @@ class ArticleRequest extends FormRequest
     {
 
         return [
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'content' => 'required|string',
-            'keywords' => 'nullable|string',
+            'en.title' => 'required|string',
+            'en.description' => 'required|string',
+            'en.content' => 'required|string',
+            'en.keywords' => 'nullable|string',
+
+            'ar.title' => 'required_with:ar.description,ar.content|nullable|string',
+            'ar.description' => 'required_with:ar.title,ar.content|nullable|string',
+            'ar.content' => 'required_with:ar.title,ar.description|nullable|string',
+            'ar.keywords' => 'nullable|string',
+
             'category_id' => 'required|exists:categories,id',
             'image' => $this->_method?'nullable|image|mimes:jpeg,jpg,png':'required|image|mimes:jpeg,jpg,png'
         ];

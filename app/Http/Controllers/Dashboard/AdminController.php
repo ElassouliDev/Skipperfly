@@ -9,7 +9,6 @@ use App\Http\Requests\AdminRequest;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Requests\TagRequest;
 use App\Http\Requests\UserRequest;
-use App\Models\Admin;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;

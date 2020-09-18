@@ -3,28 +3,24 @@
 namespace App\Models;
 
 use App\User;
+use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
-class Article extends Model
+class Article extends Model implements \Astrotomic\Translatable\Contracts\Translatable
 {
 
-    use HasSlug;
+    use Translatable; // 2. To add translation methods
+
 
     protected $guarded = [] ;
     protected $appends = ['image_url' , 'count_comments'  ,'in_favorite'];
 
+    public $translatedAttributes = ['title','slug',  'description','content','keywords'];
 
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->usingSeparator('_');
-    }
+
+
     public function getImageUrlAttribute()
     {
         return !in_array( $this->image, ['B1.png','B2.png','B3.png','B4.png','B5.png','B6.png','B7.png','B8.png'])?
@@ -32,6 +28,7 @@ class Article extends Model
             url('website//assets/img/'.$this->image )
             ;
     }
+
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('F d,Y');
@@ -59,7 +56,7 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
     public  function  author(){
-        return $this->belongsTo(Admin::class,'admin_id');
+        return $this->belongsTo(User::class,'user_id');
     }
     public  function  category(){
 

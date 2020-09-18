@@ -7,123 +7,208 @@
 @endpush
 @section('title',$title)
 @section('content')
-
     <div class="col-md-12 col-sm-12">
-        <div class="portlet light">
-            <div class="portlet-title">
-                <div class="caption font-green">
-                    <i class="icon-settings font-green"></i>
-                    <span class="caption-subject bold uppercase">@lang('admin.create')</span>
-                </div>
+        <div class="profile-content">
+            <div class="row">
+                <form role="form" method="post" action="{{route('dashboard.article.store')}}"
+                      enctype="multipart/form-data">
+                    @csrf
 
-            </div>
-            <div class="portlet-body form">
-                <div class="row">
                     <div class="col-md-12">
-                        <form role="form" method="post" class="form-post-data" action="{{route('dashboard.article.store')}}"
-                              enctype="multipart/form-data">
-                            @csrf
+                        <div class="portlet light">
+                            <div class="portlet-title tabbable-line">
+                                <div class="caption   caption-md font-green">
+                                    <i class="icon-settings font-green"></i>
+                                    <span class="caption-subject bold uppercase">@lang('admin.create')</span>
+                                </div>
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a href="#tab_1_1" data-toggle="tab"> @lang('admin.ar')</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#tab_1_2" data-toggle="tab"> @lang('admin.en')</a>
+                                    </li>
 
-                            <div class="form-body">
+                                </ul>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="tab-content">
+                                    <!-- GENERAL QUESTION TAB -->
+                                    <div class="tab-pane " id="tab_1_1">
+                                        <div class="form-body">
 
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" required name="en[title]"
-                                                   value="{{old('en.title')}}"
-                                                   id="form_control_1" placeholder="@lang('admin.title')">
-                                            <label for="form_control_1">@lang('admin.title')</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <input type="text" class="form-control" name="ar[title]"
+                                                               value="{{old('ar.title')}}"
+                                                               id="form_control_1" placeholder="@lang('admin.title') ">
+                                                        <label for="form_control_1">@lang('admin.title')
+                                                            (@lang('admin.ar'))*</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <input type="text" class="form-control" name="ar[description]"
+                                                               value="{{old('ar.description')}}"
+                                                               id="form_control_1"
+                                                               placeholder="@lang('admin.description')">
+                                                        <label for="form_control_1">@lang('admin.description')
+                                                            (@lang('admin.ar')) *</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <label for="summernote_1">@lang('admin.content')
+                                                            (@lang('admin.ar')) * </label>
+
+                                                        <textarea name="ar[content]" class="summernote_1">
+                                                {{old('ar.content')}}
+                                            </textarea>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="form-group form-md-line-input">
+                                                <label class="col-md-2 control-label"
+                                                       for="keywords">@lang('admin.keywords') (@lang('admin.ar')
+                                                    )</label>
+                                                <div class="col-md-10">
+
+                                                    <input id="tags_1" type="text" name="ar[keywords]"
+                                                           data-role="tagsinput"
+                                                           class="form-control tags "
+                                                           placeholder="@lang('admin.keywords')"
+                                                           value="{{old('ar.keywords')}}"/>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" required name="en[description]"
-                                                   value="{{old('en.description')}}"
-                                                   id="form_control_1" placeholder="@lang('admin.description')">
-                                            <label for="form_control_1">@lang('admin.description')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-md-line-input">
-                                            <label for="summernote_1">@lang('admin.content')</label>
 
-                                            <textarea name="en[content]"  required id="summernote_1">
+
+                                    </div>
+                                    <!-- END GENERAL QUESTION TAB -->
+                                    <!-- MEMBERSHIP TAB -->
+                                    <div class="tab-pane active" id="tab_1_2">
+                                        <div class="form-body">
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <input type="text" class="form-control" name="en[title]"
+                                                               value="{{old('en.title')}}" required
+                                                               id="form_control_1" placeholder="@lang('admin.title') ">
+                                                        <label for="form_control_1">@lang('admin.title')
+                                                            (@lang('admin.en'))*</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <input type="text" class="form-control" required
+                                                               name="en[description]"
+                                                               value="{{old('en.description')}}"
+                                                               id="form_control_1"
+                                                               placeholder="@lang('admin.description')">
+                                                        <label for="form_control_1">@lang('admin.description')
+                                                            (@lang('admin.en')) *</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <label for="summernote_1">@lang('admin.content')
+                                                            (@lang('admin.en')) * </label>
+
+                                                        <textarea name="en[content]" required class="summernote_1">
                                                 {{old('en.content')}}
                                             </textarea>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-                                <div class="form-group form-md-line-input">
-                                    <label class="col-md-2 control-label"
-                                           for="keywords">@lang('admin.keywords')</label>
-                                    <div class="col-md-10">
-
-                                        <input id="tags_1" type="text" name="en[keywords]" data-role="tagsinput"
-                                               class="form-control tags " placeholder="@lang('admin.keywords')"
-                                               value="{{old('en.keywords')}}"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-2 control-label"
-                                               for="title_id">@lang('admin.category')</label>
-                                        <div class="col-md-10">
-                                            <select name="category_id" class="form-control" required id="title_id">
-                                                @foreach($categories as $item)
-                                                    <option value="{{$item->id}}">{{$item->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-2 control-label"
-                                               for="title_id">@lang('admin.tags')</label>
-                                        <div class="col-md-10">
-                                            <select name="tag_id[]" class="form-control select-2" multiple id="title_id">
-                                                @foreach($tags as $item)
-                                                    <option value="{{$item->id}}" >{{$item->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group  form-md-line-input">
-                                        <label for="form_control_1">@lang('admin.send_mail') : </label>
-                                        <div
-                                            class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-on"
-                                            style="width: 101px;">
-
-                                            <div class="bootstrap-switch-container" style="width: 148px; margin-left: 0px;">
-
-                                                <input type="checkbox" name="send_mail" class="make-switch"
-                                                       data-on-text="ON" data-off-color="danger"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6"><div class="form-group last">
-                                        <label class="control-label col-md-3">@lang('admin.image')</label>
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                    <img
-                                                        src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
-                                                        alt="">
+                                                    </div>
                                                 </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail"
-                                                     style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
-                                                <div>
+
+
+                                            </div>
+                                            <div class="form-group form-md-line-input">
+                                                <label class="col-md-2 control-label"
+                                                       for="keywords">@lang('admin.keywords') (@lang('admin.en')
+                                                    )</label>
+                                                <div class="col-md-10">
+
+                                                    <input id="tags_1" type="text" name="en[keywords]"
+                                                           data-role="tagsinput"
+                                                           class="form-control tags "
+                                                           placeholder="@lang('admin.keywords')"
+                                                           value="{{old('en.keywords')}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!-- END MEMBERSHIP TAB -->
+                                </div>
+
+                                <br>
+                                <hr/>
+
+                                <br>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-2 control-label"
+                                                   for="title_id">@lang('admin.category')</label>
+                                            <div class="col-md-10">
+                                                <select name="category_id" class="form-control" required id="title_id">
+                                                    @foreach($categories as $item)
+                                                        <option value="{{$item->id}}">{{$item->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-2 control-label"
+                                                   for="title_id">@lang('admin.tags')</label>
+                                            <div class="col-md-10">
+                                                <select name="tag_id[]" class="form-control select-2" multiple
+                                                        id="title_id">
+                                                    @foreach($tags as $item)
+                                                        <option value="{{$item->id}}">{{$item->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group  form-md-line-input">
+                                            <label for="form_control_1">@lang('admin.send_mail') : </label>
+                                            <div
+                                                class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-on"
+                                                style="width: 101px;">
+
+                                                <div class="bootstrap-switch-container"
+                                                     style="width: 148px; margin-left: 0px;">
+
+                                                    <input type="checkbox" name="send_mail" class="make-switch"
+                                                           data-on-text="ON" data-off-color="danger"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group last">
+                                            <label class="control-label col-md-3">@lang('admin.image')</label>
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail"
+                                                         style="width: 200px; height: 150px;">
+                                                        <img
+                                                            src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail"
+                                                         style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                                                    <div>
 													<span class="btn default btn-file">
 													<span class="fileinput-new">
 													Select image </span>
@@ -131,65 +216,64 @@
 													Change </span>
 												<input type="file" required
 
-                                                                                                           name="image">
+                                                       name="image">
 													</span>
 
+                                                    </div>
                                                 </div>
+                                                <div class="clearfix"></div>
                                             </div>
-                                            <div class="clearfix"></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
-
-                            <div>
 
                             </div>
                             <div class="form-actions noborder">
-                                <button type="submit" class="btn blue " id="submitBtn">@lang('admin.save')</button>
-                                {{--                                <button  class="btn blue" id="submitFile">@lang('admin.saveششش')</button>--}}
+                                <button type="submit" class="btn blue">@lang('admin.save')</button>
+                                <button type="reset" class="btn default">@lang('admin.cancel')</button>
                             </div>
-                        </form>
 
-
+                        </div>
                     </div>
-                </div>
+
+                </form>
             </div>
         </div>
 
-
-    @endsection
-
-    @push('js')
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-{{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>--}}
-{{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>--}}
-{{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>--}}
-{{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>--}}
-            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
-            <!-- END PAGE LEVEL PLUGINS -->
-            <script>
-                $(document).ready(function () {
-                    $('#summernote_1').summernote({height: 300});
-
-             //       ComponentsEditors.init();
-
-                    /*    $("#input-20").fileinput({
-                            browseClass: "btn btn-primary btn-block" ,
-                            showCaption: false,
-                            showRemove: false,
-                            showUpload: false
-                        });*/
-                    $('.select-2').select2({
-                        dir: 'rtl',
-                        width: '100%'
-                    });
-
-                });
-            </script>
+    </div>
 
 
+@endsection
 
-    @endpush
+@push('js')
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    {{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>--}}
+    {{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>--}}
+    {{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>--}}
+    {{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>--}}
+    <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-summernote/summernote.min.js"
+            type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script>
+        $(document).ready(function () {
+            $('.summernote_1').summernote({height: 300});
+
+            //       ComponentsEditors.init();
+
+            /*    $("#input-20").fileinput({
+                    browseClass: "btn btn-primary btn-block" ,
+                    showCaption: false,
+                    showRemove: false,
+                    showUpload: false
+                });*/
+            $('.select-2').select2({
+                dir: 'rtl',
+                width: '100%'
+            });
+
+        });
+    </script>
+
+
+
+@endpush
