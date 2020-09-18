@@ -19,7 +19,7 @@ class CategoryController extends SupperController
         $this->data['route'] = "{$this->data['dashboard_dir']}.category";
         $this->data['title'] = trans('admin.category');
         $this->data['dashboard_dir'] = $this->data['route'];
-        $this->data["breadcrumbs"] = [trans( "admin.dashboard") => $this->data['url_prefix'], $this->data['title'] => $this->data['url_prefix'] . "/" . $this->data['route']];
+        $this->data["breadcrumbs"] = [trans("admin.dashboard") => $this->data['url_prefix'], $this->data['title'] => $this->data['url_prefix'] . "/" . $this->data['route']];
 
     }
 
@@ -60,11 +60,16 @@ class CategoryController extends SupperController
      */
     public function store(CategoryRequest $request)
     {
-        $data =$request->only('title','description','keywords','color','background');
+
+        if (!$request->has('ar.title') || empty($request->input('ar.title')))
+            $data = $request->only('en', 'color', 'background');
+        else
+            $data = $request->only('en', 'ar','color', 'background');
+
         $data['in_nav'] = $request->has('in_nav');
         Category::create($data);
 
-        return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);
+        return redirect(route($this->data['route'] . '.index'))->with(['success' => trans('admin.added_successfully')]);
 
     }
 
@@ -107,12 +112,19 @@ class CategoryController extends SupperController
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $data =$request->only('title','description','keywords','color','background');
+//        $data =$request->only('title','description','keywords','color','background');
+
+        if (!$request->has('ar.title') || empty($request->input('ar.title')))
+            $data = $request->only('en', 'color', 'background');
+        else
+            $data = $request->only('en', 'ar','color', 'background');
+
+
         $data['in_nav'] = $request->has('in_nav');
 
         $category->update($data);
 
-        return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.updated_successfully')]);
+        return redirect(route($this->data['route'] . '.index'))->with(['success' => trans('admin.updated_successfully')]);
 
 
     }
@@ -126,7 +138,7 @@ class CategoryController extends SupperController
     public function destroy(Category $category)
     {
 
-        if (\request()->ajax()){
+        if (\request()->ajax()) {
             $category->delete();
 
             return response()->json(['status' => true, 'msg' => trans('admin.deleted_successfully')]);

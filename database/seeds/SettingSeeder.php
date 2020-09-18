@@ -18,51 +18,51 @@ class SettingSeeder extends Seeder
             'value'=>'Skipperfly',
         ]);
         \App\Models\Setting::create([
-            'key'=>'title',
-            'description'=>'',
+            'key'=>'description',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'google_play_link',
-            'description'=>'',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'facebook',
-            'description'=>'',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'twitter',
-            'description'=>'',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'linkedin',
-            'description'=>'',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'instagram',
-            'description'=>'',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
             'key'=>'text_notification',
-            'description'=>'This is an example on notification you can add link or any text notification here',
+            'value'=>'This is an example on notification you can add link or any text notification here',
         ]);
         \App\Models\Setting::create([
             'key'=>'home_page_image_title',
-            'description'=>'Enjoy SkipperFly Blog and Make the Best Job',
+            'value'=>'Enjoy SkipperFly Blog and Make the Best Job',
         ]);  \App\Models\Setting::create([
             'key'=>'home_page_image_desc',
-            'description'=>'Improve Your Target Audience by Manage.',
+            'value'=>'Improve Your Target Audience by Manage.',
         ]);
         \App\Models\Setting::create([
             'key'=>'keywords',
-            'description'=>'',
+            'value'=>'',
         ]);
         \App\Models\Setting::create([
         'key'=>'home_image',
-        'description'=>'',
+        'value'=>'',
     ]);
         \App\Models\Setting::create([
         'key'=>'logo',
-        'description'=>'',
+        'value'=>'',
     ]);
     }
 }

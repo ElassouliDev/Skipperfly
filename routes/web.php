@@ -37,10 +37,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(function () {
+Route::middleware('guest')->group(function () {
+
     Route::get('/login', 'AuthController@login_page');
     Route::post('/login', 'AuthController@login')->name('login');
 
-
+});
 
   Route::middleware( ['admin_middleware','role:superadministrator'])->group(function (){
          Route::get('/', 'HomeController@index')->name('index');
@@ -63,7 +65,10 @@ Route::namespace('Dashboard')->middleware( 'auth')->group(function () {
 });
 
 
-Route::namespace('Website')->name('website.')->group(function () {
+Route::namespace('Website')->name('website.')->prefix( LaravelLocalization::setLocale())
+    ->middleware([ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])
+    ->group(
+    function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/article/{slug}', 'ArticleController@show')->name('article.show');
     Route::post('/article/add_to_favorite/{article}', 'ArticleController@add_to_favorite')->name('article.add_to_favorite');

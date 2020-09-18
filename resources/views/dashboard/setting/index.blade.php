@@ -23,7 +23,7 @@
                             <label for="form_control_1">@lang('admin.title')</label>
                         </div>
                         <div class="form-group form-md-line-input">
-                            <input type="text" class="form-control" required name="description"
+                            <input type="text" class="form-control"  name="description"
                                    value="{{old('description')??@$settings['description']}}" id="form_control_1"
                                    placeholder="@lang('admin.description')">
                             <label for="form_control_1">@lang('admin.description')</label>
@@ -61,6 +61,12 @@
                             <label for="form_control_1">@lang('admin.linkedin')</label>
                         </div>
                         <div class="form-group form-md-line-input">
+                            <input type="url" class="form-control" name="linkedin"
+                                   value="{{old('instagram')??@$settings['instagram']}}" id="form_control_1"
+                                   placeholder="@lang('admin.instagram')">
+                            <label for="form_control_1">@lang('admin.instagram')</label>
+                        </div>
+                        <div class="form-group form-md-line-input">
                             <input type="text" class="form-control" name="text_notification"
                                    value="{{old('text_notification')??@$settings['text_notification']}}" id="form_control_1"
                                    placeholder="@lang('admin.text_notification')">
@@ -92,14 +98,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                                <div class="col-md-4">
                                 <div class="col-md-6"><div class="form-group last">
                                         <label class="control-label col-md-12">@lang('admin.logo')</label>
                                         <div class="col-md-9">
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;background: #F0F0F1;"   >
+                                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;"   >
                                                     <img
-                                                        src="{{isset($settings['logo'])&& !empty($settings['logo'])?url('storage/').'/'.$settings['logo']:url('/website/assets/img/Logo1.svg')}}"
+                                                        src="{{isset($settings['logo'])&& !empty($settings['logo'])?url('storage/').'/'.$settings['logo']:url('/website/assets/img/Logo2.svg')}}"
                                                         alt="">
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail"

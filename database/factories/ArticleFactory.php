@@ -6,15 +6,15 @@ use App\Models\Article;
 use Faker\Generator as Faker;
 
 $factory->define(Article::class, function (Faker $faker) {
-    $admins_id = \App\Models\Admin::pluck('id')->toArray();
+    $admins_id = \App\User::pluck('id')->toArray();
     $categories_id = \App\Models\Category::pluck('id')->toArray();
     $images = ['B1.png','B2.png','B3.png','B4.png','B5.png','B6.png','B7.png','B8.png'];
 
     return [
-        'admin_id'=>$faker->randomElement($admins_id),
+        'user_id'=>$faker->randomElement($admins_id),
         'image'=>$faker->randomElement($images),
         'category_id'=>$faker->randomElement($categories_id),
-
+        'en'=>[
         'title'=>'the strangest booth at ces 2018!!!! the strangest booth at ces 2018!!!!the strangest booth at ces 2018!!!!',
         'description'=>'Day 2 of CES 2018 we explored some smaller booths and found some one of the craziest booths in this hall! Oh, and also ran into David Oh,and also ran into Davi one of the craziest booths in this hall! Oh,',
         'content'=>' <p>Hey all how are you doing?! I spent the weekend organizing like crazy and trying to
@@ -53,9 +53,8 @@ $factory->define(Article::class, function (Faker $faker) {
                                     Better access to applicants,<br>
                                     Higher employee productivity,<br>
                                     Increased staff retention, etc.
-                                </p> ',
-
-
+                                </p> '
+    ]
 
 
     ];

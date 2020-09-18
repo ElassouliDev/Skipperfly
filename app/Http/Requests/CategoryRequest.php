@@ -24,11 +24,16 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|string',
+            'en.title' => 'required|string',
+            'en.description' => 'required|string',
+            'en.keywords' => 'nullable|string',
+
+            'ar.title' => 'required_with:ar.description|nullable|string',
+            'ar.description' => 'required_with:ar.title|nullable|string',
+            'ar.keywords' => 'nullable|string',
+
             'color' => 'required|string',
             'background' => 'required|string',
-            'keywords' => 'nullable',
         ];
     }
 }

@@ -31,16 +31,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" required name="title"
-                                                   value="{{old('title')??$article->title}}"
+                                            <input type="text" class="form-control" required name="en[title]"
+                                                   value="{{old('en.title')??$article->title}}"
                                                    id="form_control_1" placeholder="@lang('admin.title')">
                                             <label for="form_control_1">@lang('admin.title')</label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group form-md-line-input">
-                                            <input type="text" class="form-control" required name="description"
-                                                   value="{{old('description')??$article->description}}"
+                                            <input type="text" class="form-control" required name="en[description]"
+                                                   value="{{old('en.description')??$article->description}}"
                                                    id="form_control_1" placeholder="@lang('admin.description')">
                                             <label for="form_control_1">@lang('admin.description')</label>
                                         </div>
@@ -49,18 +49,22 @@
                                         <div class="form-group form-md-line-input">
                                             <label for="summernote_1">@lang('admin.content')</label>
 
-                                            <textarea name="content"  required id="summernote_1">
-                                                {{old('content')??$article->content}}
+                                            <textarea name="en[content]"  required id="summernote_1">
+                                                {{old('en.content')??$article->content}}
                                             </textarea>
                                         </div>
                                     </div>
+                               </div>
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-2 control-label"
+                                           for="keywords">@lang('admin.keywords')</label>
+                                    <div class="col-md-10">
 
-
-
-
-
+                                        <input id="tags_1" type="text" name="en[keywords]" data-role="tagsinput"
+                                               class="form-control tags  " placeholder="@lang('admin.keywords')"
+                                               value="{{old('en.keywords')??$article->keywords}}"/>
+                                    </div>
                                 </div>
-
                             </div>
 
                             <div class="row">
@@ -87,16 +91,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-2 control-label"
-                                               for="keywords">@lang('admin.keywords')</label>
-                                        <div class="col-md-10">
 
-                                            <input id="tags_1" type="text" name="keywords" data-role="tagsinput"
-                                                   class="form-control tags  " placeholder="@lang('admin.keywords')"
-                                                   value="{{old('keywords')??$article->keywords}}"/>
-                                        </div>
-                                    </div>
 
                                 </div>
 

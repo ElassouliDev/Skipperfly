@@ -13,27 +13,27 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'title'=>"management",
+                'en'=>[ 'title'=>"management"],
                 'color'=>"#21386d",
                 'background'=>"#f7f9ff"
              ],[
-                'title'=>"services",
+                'en'=>[ 'title'=>"services"],
                 'color'=>"#00b1ff",
                 'background'=>"#f2fbff"
              ],[
-                'title'=>"Interviews",
+                'en'=>[  'title'=>"Interviews"],
                 'color'=>"#9452ff",
                 'background'=>"#f7f2ff"
              ],[
-                'title'=>"skills",
+                'en'=>['title'=>"skills"],
                 'color'=>"#21386d",
                 'background'=>"#e9ebf1"
              ],[
-                'title'=>"creativity",
+                'en'=>['title'=>"creativity"],
                 'color'=>"#fff0f2",
                 'background'=>"#f4166b"
              ],[
-                'title'=>"Tours",
+                'en'=>['title'=>"Tours"],
                 'color'=>"#4caf50",
                 'background'=>"#f0fff1"
              ],

@@ -50,6 +50,7 @@ return [
     'user'=>'User',
     'users'=>'Users',
     'admins'=>'Admins',
+    'instagram'=>'Instagram',
     'new_article_count'=>'new articles',
     'new_comments_count'=>'new comments',
     'new_user'=>'new User',
@@ -76,6 +77,8 @@ return [
     'Sign in' =>'Sign in',
     'Sign up' =>'Sign up',
     'register' =>'Register',
+    'ar' =>'AR',
+    'en' =>'EN',
     'login is done' =>'Login is done',
     'create account is done' =>'Create account is done',
 
