@@ -24,7 +24,8 @@ class TagRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:100',
+            'en.title' => 'required|string|max:100',
+            'ar.title' => 'nullable|string|max:100',
         ];
     }
 }

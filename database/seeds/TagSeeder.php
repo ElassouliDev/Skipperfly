@@ -13,16 +13,18 @@ class TagSeeder extends Seeder
     {
 
         $tags = [
-            ['title'=>'Best'],
-            ['title'=>'Tour Guide'],
-            ['title'=>'Service Pro'],
-            ['title'=>'Say'],
-            ['title'=>'Exactly'],
-            ['title'=>'Man'],
-            ['title'=>'Hot'],
-            ['title'=>'Summer'],
-            ['title'=>'Creative'],
-            ['title'=>'Healthy'],
+            ['en'=>['title'=>'Best']],
+            ['en'=>['title'=>'Tour Guide']],
+            ['en'=>['title'=>'Service Pro']],
+            ['en'=>['title'=>'Say']],
+            ['en'=>['title'=>'Exactly']],
+            ['en'=>['title'=>'Man']],
+            ['en'=>['title'=>'Hot']],
+            ['en'=>['title'=>'Summer']],
+            ['en'=>['title'=>'Best']],
+            ['en'=>['title'=>'Creative']],
+            ['en'=>['title'=>'Healthy']],
+
         ] ;
 
 

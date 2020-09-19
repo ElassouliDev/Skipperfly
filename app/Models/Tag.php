@@ -2,25 +2,20 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Tag extends Model
+    implements \Astrotomic\Translatable\Contracts\Translatable
 {
-    use HasSlug;
-    protected $guarded = [];
+
+    use Translatable; // 2. To add translation methods
+
+    public $translatedAttributes = ['title','slug'];
 
 
-    /**
-     * Get the options for generating the slug.
-     */
+    protected $guarded = [] ;
 
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->usingSeparator('_');
-    }
 }

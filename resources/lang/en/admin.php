@@ -79,6 +79,8 @@ return [
     'register' =>'Register',
     'ar' =>'AR',
     'en' =>'EN',
+    'images' =>'Images',
+    'social_and_url' =>'Social and links',
     'login is done' =>'Login is done',
     'create account is done' =>'Create account is done',
 

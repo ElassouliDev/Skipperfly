@@ -18,7 +18,7 @@ class TagController extends SupperController
         $this->data['route'] = "{$this->data['dashboard_dir']}.tag";
         $this->data['title'] = trans('admin.tag');
         $this->data['dashboard_dir'] = $this->data['route'];
-        $this->data["breadcrumbs"] = [trans( "admin.dashboard") => $this->data['url_prefix'], $this->data['title'] => $this->data['url_prefix'] . "/" . $this->data['route']];
+        $this->data["breadcrumbs"] = [trans("admin.dashboard") => $this->data['url_prefix'], $this->data['title'] => $this->data['url_prefix'] . "/" . $this->data['route']];
 
     }
 
@@ -59,9 +59,14 @@ class TagController extends SupperController
      */
     public function store(TagRequest $request)
     {
-        Tag::create($request->only('title'));
+        if (!$request->has('ar.title') || empty($request->input('ar.title')))
+            $data = $request->only('en');
+        else
+            $data = $request->only('en', 'ar');
 
-        return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);
+        Tag::create($data);
+
+        return redirect(route($this->data['route'] . '.index'))->with(['success' => trans('admin.added_successfully')]);
 
     }
 
@@ -84,7 +89,7 @@ class TagController extends SupperController
      */
     public function edit(Tag $tag)
     {
-         $this->data['route'] = "{$this->data['route']}.edit";
+        $this->data['route'] = "{$this->data['route']}.edit";
         $this->data['title'] = trans('admin.edit');
         $this->data["breadcrumbs"][$tag['slug']] = "";
         $this->data["breadcrumbs"][$this->data['title']] = "";
@@ -104,10 +109,14 @@ class TagController extends SupperController
      */
     public function update(TagRequest $request, Tag $tag)
     {
+        if (!$request->has('ar.title') || empty($request->input('ar.title')))
+            $data = $request->only('en');
+        else
+            $data = $request->only('en', 'ar');
 
-        $tag->update($request->only('title'));
+        $tag->update($data);
 
-        return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.updated_successfully')]);
+        return redirect(route($this->data['route'] . '.index'))->with(['success' => trans('admin.updated_successfully')]);
 
 
     }
@@ -121,7 +130,7 @@ class TagController extends SupperController
     public function destroy(Tag $tag)
     {
 
-        if (\request()->ajax()){
+        if (\request()->ajax()) {
             $tag->delete();
 
             return response()->json(['status' => true, 'msg' => trans('admin.deleted_successfully')]);
