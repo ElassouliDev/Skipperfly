@@ -18,8 +18,9 @@
 
     @if(app()->getLocale() == 'ar')
 
+        <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
 
-    <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap-rtl.min.css">
+{{--    <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap-rtl.min.css">--}}
     @else
         <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
     @endif

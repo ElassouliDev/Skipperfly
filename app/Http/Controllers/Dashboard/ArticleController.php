@@ -86,15 +86,7 @@ class ArticleController extends SupperController
 
             });
 
-            //TODO :: add artisan call to event
-//            Artisan::call('schedule:run');
-
-//            Artisan::call('queue:work');
-//            $schedule->command('queue:work')->everyMinute();
-//            $schedule->command('queue:restart')->everyFiveMinutes();
-        }
-
-      dd(1);
+         }
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);
 
