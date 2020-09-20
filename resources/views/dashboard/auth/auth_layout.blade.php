@@ -18,21 +18,20 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>{{@$settings_website['title']}}</title>
+    <title>{{@$settings_website['title_'.app()->getLocale()]}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="{{@$settings_website['description']}}" name="description"/>
-    <meta content="{{@$settings_website['title']}}" name="author"/>
-    <meta content="{{@$settings_website['title']}}" name="title"/>
-    <meta content="{{@$settings_website['keywords']}}" name="keywords"/>
+    <meta content="{{@$settings_website['description_'.app()->getLocale()]}}" name="description"/>
+    <meta content="{{@$settings_website['title_'.app()->getLocale()]}}" name="author"/>
+    <meta content="{{@$settings_website['title_'.app()->getLocale()]}}" name="title"/>
+    <meta content="{{@$settings_website['keywords_'.app()->getLocale()]}}" name="keywords"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
+
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
     <link href="{{url('/dashboard_assets')}}/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -60,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="logo">
     <a href="#">
     </a>
-    <h1 class="text-center bold ">                {{@$settings_website['title']}}    </h1>
+    <h1 class="text-center bold ">                {{@$settings_website['title_'.app()->getLocale()]}}    </h1>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->

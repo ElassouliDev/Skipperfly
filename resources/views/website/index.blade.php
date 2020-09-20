@@ -22,16 +22,19 @@
 
                             @endforeach
 
+
                         </div>
                         @if($articles_paginate_data['last_page'] > 1)
                             <div class="pagination">
                                 <ul class="list-unstyled inline">
                                     <li><a href="{{$articles_paginate_data['prev_page_url']??'javascript:void(0)'}}"
-                                           aria-label="Previous"><i class="far fa-angle-left"></i> Previous</a></li>
+                                           aria-label="Previous"><i class="far fa-angle-{{app()->getLocale()=="ar"?'right':'left'}}"></i>@lang('admin.previous')
+                                        </a>
+                                    </li>
 
                                     <li><a href="{{$articles_paginate_data['next_page_url']??"javascript:void(0)"}}"
                                            disabled="{{empty($articles_paginate_data['next_page_url'])}}"
-                                           aria-label="Next">Next <i class="far fa-angle-right"></i></a></li>
+                                           aria-label="Next">@lang('admin.next')  <i class="far fa-angle-{{app()->getLocale()=="ar"?'left':'right'}}"></i></a></li>
                                 </ul>
                                 <div class="page">
                                     <span>{{$articles_paginate_data['current_page'] }}</span> /
@@ -50,8 +53,11 @@
                             <div class="post-featured">
                                 <ul class="list-unstyled">
                                     @if(isset($last_article) && count($last_article)>0)
-                                        @foreach($last_article as $article)
+{{--                                        @dd($last_article->    pluck('id','slug'))--}}
+
+                                    @foreach($last_article as $article)
                                             <li>
+
                                                 <a title="{{$article->title}}"
                                                    href="{{route('website.article.show',$article->slug)}}">
                                                     <img alt="{{$article->title}}" src="{{$article->image_url}}">
@@ -63,6 +69,7 @@
                                                 </a>
                                             </li>
                                         @endforeach
+
                                     @else
 
                                         <li class="text-center">

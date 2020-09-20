@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{@$setting_app['title']}}</title>
+    <title>{{@$setting_app['title_en']}}</title>
     <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
     <script src="{{url('website/')}}/assets/bootstrap/bootstrap.js"></script>
 
@@ -14,8 +14,8 @@
 <body>
 <div class="container" style="padding: 22px">
     <div class="logo-footer " style=" margin: 30px;  text-align: center">
-        <a href="{{url('/')}}" title="{{@$setting_app['title']}}}">
-            <img src="{{isset($setting_app['logo'])&& !empty($setting_app['logo'])?url('storage/').'/'.$setting_app['logo']:url('/website/assets/img/Logo2.svg')}}" alt="{{@$setting_app['title']}}" height="60"
+        <a href="{{url('/')}}" title="{{@$setting_app['title_en']}}}">
+            <img src="{{isset($setting_app['logo'])&& !empty($setting_app['logo'])?url('storage/').'/'.$setting_app['logo']:url('/website/assets/img/Logo2.svg')}}" alt="{{@$setting_app['title_en']}}" height="60"
                  width="234" >
         </a>
     </div>
@@ -38,7 +38,7 @@
         <br>
 
 
-        {{@$setting_app['title']??"Skipperfly"}} team
+        {{@$setting_app['title_en']??"Skipperfly"}} team
 
     </p>
 </div>

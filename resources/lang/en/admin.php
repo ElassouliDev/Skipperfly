@@ -83,6 +83,9 @@ return [
     'social_and_url' =>'Social and links',
     'login is done' =>'Login is done',
     'create account is done' =>'Create account is done',
+    'next' => 'Next',
+    'previous' => 'Previous',
+
 
 ];
 

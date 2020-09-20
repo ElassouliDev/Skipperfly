@@ -44,7 +44,9 @@ class HomeController extends SupperController
 
 
 
-        $this->data['category'] = Category::where('slug',$slug)->firstOrFail();
+        $this->data['category'] = Category::whereHas('translations',function ($query)use ( $slug){
+            $query->where('slug',$slug);
+        })->firstOrFail();
         $this->data['last_article'] = Article::latest()->take(3)->get();
        $this->data['title'] = $this->data['category']->title;
 
@@ -56,7 +58,9 @@ class HomeController extends SupperController
    public  function  show_tag($slug){
 
 
-        $tag = Tag::where('slug',$slug)->firstOrFail();
+        $tag = Tag::whereHas('translations',function ($query)use ( $slug){
+            $query->where('slug',$slug);
+        })->firstOrFail();
         $this->data['last_article'] = Article::latest()->take(3)->get();
         $this->data['articles'] = Article::whereHas('tags',function ($query) use ($tag){
             $query->where('id',$tag->id);

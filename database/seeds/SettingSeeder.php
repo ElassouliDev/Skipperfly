@@ -14,11 +14,21 @@ class SettingSeeder extends Seeder
 
         \App\Models\Setting::truncate();
         \App\Models\Setting::create([
-            'key'=>'title',
+            'key'=>'title_en',
             'value'=>'Skipperfly',
         ]);
         \App\Models\Setting::create([
-            'key'=>'description',
+            'key'=>'title_ar',
+            'value'=>'Skipperfly',
+        ]);
+
+
+        \App\Models\Setting::create([
+            'key'=>'description_en',
+            'value'=>'',
+        ]);
+        \App\Models\Setting::create([
+            'key'=>'description_ar',
             'value'=>'',
         ]);
         \App\Models\Setting::create([
@@ -42,18 +52,36 @@ class SettingSeeder extends Seeder
             'value'=>'',
         ]);
         \App\Models\Setting::create([
-            'key'=>'text_notification',
+            'key'=>'text_notification_en',
             'value'=>'This is an example on notification you can add link or any text notification here',
         ]);
         \App\Models\Setting::create([
-            'key'=>'home_page_image_title',
+            'key'=>'text_notification_ar',
+            'value'=>'This is an example on notification you can add link or any text notification here',
+        ]);
+        \App\Models\Setting::create([
+            'key'=>'home_page_image_title_en',
             'value'=>'Enjoy SkipperFly Blog and Make the Best Job',
-        ]);  \App\Models\Setting::create([
-            'key'=>'home_page_image_desc',
+        ]);
+        \App\Models\Setting::create([
+            'key'=>'home_page_image_title_ar',
+            'value'=>'Enjoy SkipperFly Blog and Make the Best Job',
+        ]);
+
+        \App\Models\Setting::create([
+            'key'=>'home_page_image_desc_en',
             'value'=>'Improve Your Target Audience by Manage.',
         ]);
         \App\Models\Setting::create([
-            'key'=>'keywords',
+            'key'=>'home_page_image_desc_en',
+            'value'=>'Improve Your Target Audience by Manage.',
+        ]);
+        \App\Models\Setting::create([
+            'key'=>'keywords_ar',
+            'value'=>'',
+        ]);
+        \App\Models\Setting::create([
+            'key'=>'keywords_en',
             'value'=>'',
         ]);
         \App\Models\Setting::create([

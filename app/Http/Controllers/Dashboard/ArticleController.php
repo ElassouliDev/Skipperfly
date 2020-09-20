@@ -72,13 +72,14 @@ class ArticleController extends SupperController
         else
             $data = $request->only('en', 'ar','image', 'category_id');
 
+//        dd($data);
 //        $data = $request->only('en','image','category_id');
 //        $data = $request->only('title','description','content','image','keywords','category_id');
         $data['user_id'] =auth()->id();
         $article = Article::create($data);
         $article->tags()->sync($request->tag_id);
 
-        if ( $request->has('send_mail')){
+        if ( true ||$request->has('send_mail')){
             \App\Models\Subscribe::chunk(50,function ($data) use ($article){
 
                 dispatch(new  \App\Jobs\SendNewArticleMailJob($data,$article));
@@ -87,9 +88,13 @@ class ArticleController extends SupperController
 
             //TODO :: add artisan call to event
 //            Artisan::call('schedule:run');
+
+//            Artisan::call('queue:work');
+//            $schedule->command('queue:work')->everyMinute();
+//            $schedule->command('queue:restart')->everyFiveMinutes();
         }
 
-//        dd(1);
+      dd(1);
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.added_successfully')]);
 

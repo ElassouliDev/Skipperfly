@@ -7,7 +7,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <div class="logo-footer">
-                                <a href="#" title="{{@$settings_website['title']}}}">
+                                <a href="#" title="{{@$settings_website['title_'.app()->getLocale()]}}}">
                                     <img src="{{isset($settings_website['logo'])&& !empty($settings_website['logo'])?url('storage/').'/'.$settings_website['logo']:url('/website/assets/img/Logo1.svg')}}" alt="{{@$settings_website['title']}}" height="60"
                                          width="234">
                                 </a>
@@ -15,10 +15,17 @@
                         </li>
                         <li>
                             <ul class="list-unstyled language">
-                                <li><a href="" class="active">english</a></li>
-                                <li><a href="">arabic</a></li>
-                                <li><a href="">turkish</a></li>
-                                <li><a href="">swedish</a></li>
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <li>
+                                        <a class="{{app()->getLocale()==$localeCode?"active":""}}" rel="alternate"  hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+{{--                                <li><a href="" class="active">english</a></li>--}}
+{{--                                <li><a href="">arabic</a></li>--}}
+{{--                                <li><a href="">turkish</a></li>--}}
+{{--                                <li><a href="">swedish</a></li>--}}
                             </ul>
                         </li>
 {{--                        <li>--}}
@@ -84,7 +91,7 @@
         <div class="footer-bottom">
             <div class="row">
                 <div class="col-lg-3">
-                    <a href="#" title="">{{@$settings_website['title']}} © 2020</a>
+                    <a href="#" title="">{{@$settings_website['title_'.app()->getLocale()]}} © 2020</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="row">

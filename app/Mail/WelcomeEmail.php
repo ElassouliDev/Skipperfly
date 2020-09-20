@@ -34,6 +34,6 @@ class WelcomeEmail extends Mailable
         $setting_app = Setting::pluck('value','key')->toArray();
 
         return $this->markdown('emails.welcome', ['user'=>$this->user  , 'setting_app'=>$setting_app ])
-         ->subject("Thank You! {$this->user->name} for subscribing in {$setting_app['title']} Blog");
+         ->subject("Thank You! {$this->user->name} for subscribing in {$setting_app['title_en']} Blog");
     }
 }

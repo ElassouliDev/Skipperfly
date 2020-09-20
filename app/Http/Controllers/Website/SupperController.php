@@ -16,6 +16,7 @@ class SupperController extends Controller
 //        $this->data['settings_website'] = Setting::pluck('value','key')->toArray();
         View::share('settings_website',  Setting::pluck('value','key')->toArray());
 
+        config()->set('translatable.locale',app()->getLocale());
 
 
     }

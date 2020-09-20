@@ -34,6 +34,23 @@ use Illuminate\Support\Facades\Route;
 //
 //    });
 //});
+//Route::get('/test', function (){
+//////    \Illuminate\Support\Facades\App::setLocale('ar');
+////
+////
+////    $tag = \App\Models\Tag::latest()->first();
+////    echo ' local :' . $tag->title .'<br> ';
+////    echo ' translate en :"' . $tag->translate('en')->title .'<br> ';
+////
+////    app()->setLocale('ar');
+////    echo ' local ar:' . $tag->title .'<br> ';
+////    echo ' translate ar :"' . $tag->translate('ar')->title .'<br> ';
+//
+//
+//    \Illuminate\Support\Facades\Artisan::call('schedule:run');
+//dd(1);
+//
+//});
 
 
 Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(function () {

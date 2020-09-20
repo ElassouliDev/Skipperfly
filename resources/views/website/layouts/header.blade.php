@@ -9,8 +9,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <h1>{{@$settings_website['home_page_image_title']}}</h1>
-                    <p>{{@$settings_website['home_page_image_desc']}}</p>
+                    <h1>{{@$settings_website['home_page_image_title_'.app()->getLocale()]}}</h1>
+                    <p>{{@$settings_website['home_page_image_desc_'.app()->getLocale()]}}</p>
                 </div>
             </div>
         </div>

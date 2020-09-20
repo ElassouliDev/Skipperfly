@@ -3,20 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{@$settings_website['title']}}-@yield('title')</title>
+    <title>{{@$settings_website['title_'.app()->getLocale()]}}-@yield('title')</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta content="{{@$settings_website['description']}}" name="description"/>
-    <meta content="{{@$settings_website['title']}}" name="author"/>
-    <meta content="{{@$settings_website['title']}}" name="title"/>
-    <meta content="{{@$settings_website['keywords']}}" name="keywords"/>
+    <meta content="{{@$settings_website['description_'.app()->getLocale()]}}" name="description"/>
+    <meta content="{{@$settings_website['title_'.app()->getLocale()]}}" name="author"/>
+    <meta content="{{@$settings_website['title_'.app()->getLocale()]}}" name="title"/>
+    <meta content="{{@$settings_website['keywords_'.app()->getLocale()]}}" name="keywords"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{isset($settings_website['logo'])&& !empty($settings_website['logo'])?url('storage/').'/'.$settings_website['logo']:url('/website/assets/img/Logo1.svg')}}"/>
     <link rel="stylesheet" type="text/css" href="{{url('/dashboard_assets')}}/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>
 
-    <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
+    @if(app()->getLocale() == 'ar')
+
+
+    <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap-rtl.min.css">
+    @else
+        <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
+    @endif
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.9.0/css/all.css">
 
     <link rel="stylesheet" type="text/css" href="{{url('/dashboard_assets')}}/global/plugins/bootstrap-toastr/toastr.min.css"/>
