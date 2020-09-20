@@ -85,6 +85,8 @@ return [
     'create account is done' =>'Create account is done',
     'next' => 'Next',
     'previous' => 'Previous',
+    'featured posts' => 'featured posts',
+    'categories' => 'categories',
 
 
 ];

@@ -18,9 +18,10 @@
 
     @if(app()->getLocale() == 'ar')
 
-        <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
+{{--        <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">--}}
 
-{{--    <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap-rtl.min.css">--}}
+    <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap-rtl.min.css">
+
     @else
         <link rel="stylesheet" href="{{url('website/')}}/assets/bootstrap/bootstrap.css">
     @endif
@@ -30,6 +31,11 @@
     <link rel="stylesheet" type="text/css" href="{{url('/dashboard_assets')}}/global/plugins/bootstrap-toastr/toastr.min.css"/>
 
     <link rel="stylesheet" href="{{url('website/')}}/assets/css/style.css">
+    @if(app()->getLocale() == 'ar')
+    <link rel="stylesheet" href="{{url('website/')}}/assets/css/style-rtl.css">
+
+    @endif
+
     <style>
         .user_nav_logo{
             position: absolute;

@@ -13,28 +13,39 @@
                 <div class="col-lg-8">
                     <div class="posts">
                         <div class="row">
-                            @foreach($articles as $article)
 
-                                <div class="col-md-6 col-sm-6">
-                                    @component('website.components.article_card',['article'=>$article])
-                                    @endcomponent
+                            @if(isset($articles) && $articles->count()>0)
+
+                                @foreach($articles as $article)
+
+                                    <div class="col-md-6 col-sm-6">
+                                        @component('website.components.article_card',['article'=>$article])
+                                        @endcomponent
+                                    </div>
+
+                                @endforeach
+                            @else
+                                <div class="text-center col-md-12 lead bg-secondary text-white py-3 h3">
+                                    @lang('admin.no_article')
                                 </div>
 
-                            @endforeach
-
+                            @endif
 
                         </div>
                         @if($articles_paginate_data['last_page'] > 1)
                             <div class="pagination">
                                 <ul class="list-unstyled inline">
                                     <li><a href="{{$articles_paginate_data['prev_page_url']??'javascript:void(0)'}}"
-                                           aria-label="Previous"><i class="far fa-angle-{{app()->getLocale()=="ar"?'right':'left'}}"></i>@lang('admin.previous')
+                                           aria-label="Previous"><i
+                                                class="far fa-angle-{{app()->getLocale()=="ar"?'right':'left'}}"></i>@lang('admin.previous')
                                         </a>
                                     </li>
 
                                     <li><a href="{{$articles_paginate_data['next_page_url']??"javascript:void(0)"}}"
                                            disabled="{{empty($articles_paginate_data['next_page_url'])}}"
-                                           aria-label="Next">@lang('admin.next')  <i class="far fa-angle-{{app()->getLocale()=="ar"?'left':'right'}}"></i></a></li>
+                                           aria-label="Next">@lang('admin.next') <i
+                                                class="far fa-angle-{{app()->getLocale()=="ar"?'left':'right'}}"></i></a>
+                                    </li>
                                 </ul>
                                 <div class="page">
                                     <span>{{$articles_paginate_data['current_page'] }}</span> /
@@ -49,13 +60,13 @@
                 <div class="col-lg-4">
                     <div class="sidebar">
                         <div class="sidebar-box">
-                            <h3>featured posts</h3>
+                            <h3>@lang('admin.featured posts')</h3>
                             <div class="post-featured">
                                 <ul class="list-unstyled">
                                     @if(isset($last_article) && count($last_article)>0)
-{{--                                        @dd($last_article->    pluck('id','slug'))--}}
+                                        {{--                                        @dd($last_article->    pluck('id','slug'))--}}
 
-                                    @foreach($last_article as $article)
+                                        @foreach($last_article as $article)
                                             <li>
 
                                                 <a title="{{$article->title}}"
@@ -83,7 +94,7 @@
                             </div>
                         </div>
                         <div class="sidebar-box">
-                            <h3>authors</h3>
+                            <h3>@lang('admin.authors')</h3>
                             <div class="authors">
                                 <ul class="list-unstyled">
 
@@ -105,7 +116,7 @@
                             </div>
                         </div>
                         <div class="sidebar-box">
-                            <h3>categories</h3>
+                            <h3>@lang('admin.categories')</h3>
                             <div class="categories">
                                 <ul class="list-unstyled">
                                     @foreach($categories as $category)
@@ -189,8 +200,6 @@
                 PopUp("show");
             }, 5000);
         };
-
-
 
 
     </script>
