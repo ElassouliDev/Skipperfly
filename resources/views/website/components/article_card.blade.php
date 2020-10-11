@@ -9,7 +9,7 @@
         <div class="author">
             <div class="author-profile">
                 <div class="author-image">
-                    <img src="{{url('website/')}}/assets/img/author.png" alt="">
+                    <img src="{{$article->author->image_url}}" alt="{{$article->author->name}}">
                 </div>
                 <div class="author-name">
                     <p>{{$article->author->name}}</p>

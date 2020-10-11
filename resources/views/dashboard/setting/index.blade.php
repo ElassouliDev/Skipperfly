@@ -30,6 +30,9 @@
                                     <li class="">
                                         <a href="#tab_1_4" data-toggle="tab"> @lang('admin.social_and_url')</a>
                                     </li>
+                                    <li class="">
+                                        <a href="#tab_1_5" data-toggle="tab"> @lang('admin.emails_content')</a>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -145,16 +148,16 @@
                                     </div>
                                     <!-- END GENERAL QUESTION TAB -->
                                     <!-- MEMBERSHIP TAB -->
-                                    <div class="tab-pane " id="tab_1_3">
-                                        <div class="col-md-6">
+                                    <div class="tab-pane " id="tab_1_3" style="overflow: auto">
+                                        <div class="col-md-4">
                                             <div class="form-group last">
                                                 <label class="control-label col-md-12">@lang('admin.logo')</label>
                                                 <div class="col-md-9">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="fileinput-new thumbnail"
-                                                             style="width: 200px; height: 150px;">
+                                                             style="width: 200px; height: 150px;     background-color: #c2c2c2;">
                                                             <img
-                                                                src="{{isset($settings['logo'])&& !empty($settings['logo'])?url('storage/').'/'.$settings['logo']:url('/website/assets/img/Logo2.svg')}}"
+                                                                src="{{isset($settings['logo'])&& !empty($settings['logo'])?url('storage/').'/'.$settings['logo']:url('/website/assets/img/Logo1.svg')}}"
                                                                 alt="">
                                                         </div>
                                                         <div class="fileinput-preview fileinput-exists thumbnail"
@@ -174,7 +177,35 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <div class="form-group last">
+                                                <label class="control-label col-md-12">@lang('admin.logo2')</label>
+                                                <div class="col-md-9">
+                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                        <div class="fileinput-new thumbnail"
+                                                             style="width: 200px; height: 150px;">
+                                                            <img
+                                                                src="{{isset($settings['logo2'])&& !empty($settings['logo2'])?url('storage/').'/'.$settings['logo2']:url('/website/assets/img/Logo2.svg')}}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="fileinput-preview fileinput-exists thumbnail"
+                                                             style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                                                        <div>
+													<span class="btn default btn-file">
+													<span class="fileinput-new">
+													Select image </span>
+													<span class="fileinput-exists">
+													Change </span>
+													<input type="file" name="logo2">
+													</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group last">
                                                 <label class="control-label col-md-12">@lang('admin.home_image')</label>
                                                 <div class="col-md-9">
@@ -197,6 +228,37 @@
 													<input type="file"
 
                                                            name="home_image">
+													</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group last">
+                                                <label class="control-label col-md-12">@lang('admin.subscribe_image')</label>
+                                                <div class="col-md-9">
+                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                        <div class="fileinput-new thumbnail"
+                                                             style="width: 200px; height: 150px;">
+                                                            <img
+                                                                src="{{isset($settings['subscribe_image']) && !empty($settings['subscribe_image']) ?url('storage/').'/'.$settings['subscribe_image']:url('/website/assets/img/subscribe.png')}}"
+
+                                                                alt="">
+                                                        </div>
+                                                        <div class="fileinput-preview fileinput-exists thumbnail"
+                                                             style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                                                        <div>
+													<span class="btn default btn-file">
+													<span class="fileinput-new">
+													Select image </span>
+													<span class="fileinput-exists">
+													Change </span>
+													<input type="file"
+
+                                                           name="subscribe_image">
 													</span>
 
                                                         </div>
@@ -243,15 +305,106 @@
                                             <label for="form_control_1">@lang('admin.linkedin')</label>
                                         </div>
                                         <div class="form-group form-md-line-input">
-                                            <input type="url" class="form-control" name="linkedin"
+                                            <input type="url" class="form-control" name="instagram"
                                                    value="{{old('instagram')??@$settings['instagram']}}"
                                                    id="form_control_1"
                                                    placeholder="@lang('admin.instagram')">
                                             <label for="form_control_1">@lang('admin.instagram')</label>
                                         </div>
 
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="blog_url"
+                                                   value="{{old('blog_url')??@$settings['blog_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.blog_url')">
+                                            <label for="form_control_1">@lang('admin.blog_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="about_url"
+                                                   value="{{old('about_url')??@$settings['about_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.about_url')">
+                                            <label for="form_control_1">@lang('admin.about_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="faq_url"
+                                                   value="{{old('faq_url')??@$settings['faq_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.faq_url')">
+                                            <label for="form_control_1">@lang('admin.faq_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="contact_us_url"
+                                                   value="{{old('contact_us_url')??@$settings['contact_us_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.contact_us_url')">
+                                            <label for="form_control_1">@lang('admin.contact_us_url')</label>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="trips_url"
+                                                   value="{{old('trips_url')??@$settings['trips_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.trips_url')">
+                                            <label for="form_control_1">@lang('admin.trips_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="services_url"
+                                                   value="{{old('services_url')??@$settings['services_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.services_url')">
+                                            <label for="form_control_1">@lang('admin.services_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="cookies_url"
+                                                   value="{{old('cookies_url')??@$settings['cookies_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.cookies_url')">
+                                            <label for="form_control_1">@lang('admin.cookies_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="services_url"
+                                                   value="{{old('services_url')??@$settings['services_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.services_url')">
+                                            <label for="form_control_1">@lang('admin.services_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="privacy_url"
+                                                   value="{{old('privacy_url')??@$settings['privacy_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.privacy_url')">
+                                            <label for="form_control_1">@lang('admin.privacy_url')</label>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <input type="url" class="form-control" name="terms_and_conditions_url"
+                                                   value="{{old('terms_and_conditions_url')??@$settings['terms_and_conditions_url']}}"
+                                                   id="form_control_1"
+                                                   placeholder="@lang('admin.terms_and_conditions_url')">
+                                            <label for="form_control_1">@lang('admin.terms_and_conditions_url')</label>
+                                        </div>
+
                                     </div>
                                     <!-- END MEMBERSHIP TAB -->
+                                    <div class="tab-pane " id="tab_1_5">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-md-line-input">
+                                                <input type="text" class="form-control" name="subscribe_email_title"
+                                                       value="{{old('subscribe_email_title')??@$settings['subscribe_email_title']}}"
+                                                       id="form_control_1"
+                                                       placeholder="@lang('admin.subscribe_email_title')">
+                                                <label for="form_control_1">@lang('admin.subscribe_email_title')</label>
+                                            </div>
+                                            <div class="form-group form-md-line-input">
+                                                <label for="summernote_1">@lang('admin.subscribe_email_content')
+                                                    * </label>
+
+                                                <textarea name="subscribe_email_content"  class="summernote_1">
+                                                    {{old('subscribe_email_content')??@$settings['subscribe_email_content']}}
+                                            </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -270,3 +423,21 @@
     </div>
 
 @endsection
+@push('js')
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    {{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>--}}
+    {{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>--}}
+    {{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>--}}
+    {{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>--}}
+    <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-summernote/summernote.min.js"
+            type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script>
+        $(document).ready(function () {
+            $('.summernote_1').summernote({height: 300});
+     });
+    </script>
+
+
+
+@endpush

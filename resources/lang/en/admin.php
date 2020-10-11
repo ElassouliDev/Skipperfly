@@ -37,6 +37,8 @@ return [
     'twitter'=>'Twitter',
     'linkedin'=>'Linked In',
     'logo'=>'logo',
+    'logo2' => 'Logo (2)',
+
     'text_notification'=>'Text Notification',
     'home_image'=>'Home image',
     'home_page_image_title'=>'Home page image title',
@@ -87,6 +89,20 @@ return [
     'previous' => 'Previous',
     'featured posts' => 'featured posts',
     'categories' => 'categories',
+    'blog_url' => 'Blog url',
+    'about_url' => 'About Url',
+    'faq_url' => 'Faq Url',
+    'contact_us_url' => 'Contact us Url',
+    'trips_url' => 'Trips Url',
+    'cookies_url' => 'Cookies Url',
+    'services_url' => 'Services Url',
+    'privacy_url' => 'Privacy Url',
+    'subscribe_image' => 'Subscribe image',
+    'terms_and_conditions_url' => 'Terms and conditions Url',
+    'subscribers' => 'Subscribers',
+    'subscribe_email_content' => 'Subscribe email content ',
+    'subscribe_email_title' => 'Subscribe email title ',
+    'emails_content' => 'Emails content',
 
 
 ];

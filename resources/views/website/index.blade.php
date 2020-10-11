@@ -146,7 +146,8 @@
                         <div class="sidebar-box">
                             <h3>subscribe</h3>
                             <div class="sidebar-subscribe">
-                                <img src="{{url('website/')}}/assets/img/subscribe.png">
+{{--                                <img src="{{url('website/')}}/assets/img/subscribe.png">--}}
+                                <img src="{{isset($settings_website['subscribe_image'])&& !empty($settings_website['subscribe_image'])?url('storage/').'/'.$settings_website['subscribe_image']:url('/website/assets/img/subscribe.png')}}" alt="subscribe">
                                 <div class="content-subscribe">
                                     <h3>Keep updated of travel news & experiences </h3>
                                     <p>Join our newsletter & receive travel news & experiences you don’t want to

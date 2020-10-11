@@ -33,7 +33,48 @@
 
 @endpush
 @section('content')
-<!-- START HTML SECTION [ related ] -->
+
+    <section class="header" style="    margin-top: 53px;">
+
+
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand d-lg-none" href="#">Categories</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fal fa-bars"></i></button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link {{!isset($category) ?"active":""}}" href="{{url('/')}}">@lang('admin.home')</a>
+                            </li>
+                            @foreach($nav_categories as $category1)
+                                <li class="nav-item">
+                                    <a class="nav-link {{isset($category)&&$category1->id == $category->id ?"active":""}}"
+                                       href="{{route('website.category.show',$category1->slug)}}">{{$category1->title}}</a>
+                                </li>
+                            @endforeach
+
+                            @if(auth()->guest())
+                                <li class="nav-item">
+                                    <button type="submit" class="form-control btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">@lang('admin.login')</button>
+
+                                </li>
+
+                            @endif
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </section>
+
+
+    <!-- START HTML SECTION [ related ] -->
 <section class="post">
     <div class="container">
         <div class="bg">
@@ -51,7 +92,7 @@
                         </ul>
                     </div>
                 </div>
-                <img src="{{$article->image_url}}" class="media-post">
+                <img src="{{$article->image_url}}" class="media-post" style="height: 570px">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="text-post">
@@ -86,6 +127,7 @@
 {{--                                <li>--}}
 {{--                                    <a href="#" title=""><i class="fab fa-twitter"></i></a>--}}
 {{--                                </li>--}}
+                                <li><b>Share with :</b></li>
                                 <li><a target="_blank" href="{{'https://www.facebook.com/sharer.php?href='.route('website.article.show',$article->slug)}}"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a  target="_blank" href="{{'https://twitter.com/intent/tweet?url='.route('website.article.show',$article->slug)}}"><i class="fab fa-twitter"></i> </a></li>
                                 <li><a target="_blank" href="{{'https://www.linkedin.com/shareArticle?mini=true&url='.route('website.article.show',$article->slug)."&title={$article->title}&summary={$article->description}"}}"><i class="fab fa-linkedin-in"></i></a>
@@ -335,13 +377,15 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="subscribe-image">
-                    <img src="{{url('website/')}}/assets/img/subscribe.png" width="100%">
+{{--                    <img src="{{url('website/')}}/assets/img/subscribe.png" width="100%">--}}
+                    <img  width="100%" src="{{isset($settings_website['subscribe_image'])&& !empty($settings_website['subscribe_image'])?url('storage/').'/'.$settings_website['subscribe_image']:url('/website/assets/img/subscribe.png')}}" alt="subscribe">
+
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="subscribe-body">
                     <div class="subscribe-content">
-                        <img src="{{url('website/')}}/assets/img/Logo2.svg">
+                        <img src="{{isset($settings_website['logo2'])&& !empty($settings_website['logo2'])?url('storage/').'/'.$settings_website['logo2']:url('/website/assets/img/Logo2.svg')}}" alt="{{@$settings_website['title']}}">
                         <h3>Keep updated of travel news & experiences </h3>
                         <p>Join our newsletter & receive travel news & experiences you don’t want to
                             miss.

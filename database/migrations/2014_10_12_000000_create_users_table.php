@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('social_id')->nullable();
             $table->string('social_type')->nullable();
+            $table->rememberToken();
+
             $table->softDeletes();
             $table->timestamps();
         });

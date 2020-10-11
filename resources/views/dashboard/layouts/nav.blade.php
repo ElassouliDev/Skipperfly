@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="#">
-                <img src="{{isset($settings_website['logo'])&& !empty($settings_website['logo'])?url('storage/').'/'.$settings_website['logo']:url('/website/assets/img/Logo2.svg')}}" alt="logo" class="logo-default"  width="100" height="30"/>
+                <img src="{{isset($settings_website['logo2'])&& !empty($settings_website['logo2'])?url('storage/').'/'.$settings_website['logo2']:url('/website/assets/img/Logo2.svg')}}" alt="logo" class="logo-default"  width="100" height="30"/>
             </a>
 
             <div class="menu-toggler sidebar-toggler">

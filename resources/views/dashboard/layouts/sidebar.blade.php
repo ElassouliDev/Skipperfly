@@ -121,6 +121,12 @@
             </li>
 
 
+            <li class="start  {{$route=='dashboard.subscribers'?"active":""}}">
+                <a href="{{route('dashboard.subscribers.index')}}">
+                    <i class="icon-user-following"></i>
+                    <span class="title">@lang('admin.subscribers')</span>
+                </a>
+            </li>
             <li class="start  {{$route=='dashboard.setting'?"active":""}}">
                 <a href="{{route('dashboard.setting.index')}}">
                     <i class="icon-settings"></i>

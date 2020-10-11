@@ -38,22 +38,22 @@
                 <div class="col-lg-2 col-md-12">
                     <ul class="list-unstyled links">
                         <li><strong>about us</strong></li>
-                        <li><a href="#" title="">blog</a></li>
-                        <li><a href="#" title="">about</a></li>
+                        <li><a href="{{@$settings_website['blog_url']}}" title="blog" target="_blank">blog</a></li>
+                        <li><a href="{{@$settings_website['about_url']}}" title="about" target="_blank">about</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-12">
                     <ul class="list-unstyled links">
                         <li><strong>help center</strong></li>
-                        <li><a href="#" title="">faq</a></li>
-                        <li><a href="#" title="">contact us</a></li>
+                        <li><a href="{{@$settings_website['faq_url']}}" title="faq" target="_blank">faq</a></li>
+                        <li><a href="{{@$settings_website['contact_us_url']}}" title="contact us" target="_blank">contact us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-12">
                     <ul class="list-unstyled links">
                         <li><strong>marketing</strong></li>
-                        <li><a href="#" title="">trips</a></li>
-                        <li><a href="#" title="">Services</a></li>
+                        <li><a href="{{@$settings_website['trips_url']}}" title="trips" target="_blank">trips</a></li>
+                        <li><a href="{{@$settings_website['services_url']}}" title="Services" target="_blank">Services</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-12">
@@ -95,10 +95,10 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-lg-4 col"><a href="#" title="">Cookies</a></div>
-                        <div class="col-lg-4 col"><a href="#" title="">Privacy</a>
+                        <div class="col-lg-4 col"><a href="{{@$settings_website['cookies_url']}}" title="Cookies" target="_blank">Cookies</a></div>
+                        <div class="col-lg-4 col"><a href="{{@$settings_website['privacy_url']}}" title="Privacy" target="_blank">Privacy</a>
                         </div>
-                        <div class="col-lg-4 col"><a href="#" title="">Terms and conditions</a></div>
+                        <div class="col-lg-4 col"><a href="{{@$settings_website['terms_and_conditions_url']}}" title="Terms and conditions" target="_blank">Terms and conditions</a></div>
                     </div>
                 </div>
                 <div class="col-lg-3">

@@ -11,15 +11,16 @@ use Illuminate\Support\Facades\Storage;
 class Article extends Model implements \Astrotomic\Translatable\Contracts\Translatable
 {
 
+
     use Translatable; // 2. To add translation methods
 
 
     protected $guarded = [] ;
     protected $appends = ['image_url' , 'count_comments'  ,'in_favorite'];
-
     public $translatedAttributes = ['title','slug',  'description','content','keywords'];
 
 
+    protected  $with = ['tags'];
 
     public function getImageUrlAttribute()
     {
@@ -64,8 +65,7 @@ class Article extends Model implements \Astrotomic\Translatable\Contracts\Transl
     }
 
     public  function  comments(){
-
-        return $this->hasMany(Comment::class ,'article_id' , 'id') ;
+                return $this->hasMany(Comment::class ,'article_id' , 'id') ;
     }
 
     public function getCountCommentsAttribute()
@@ -82,4 +82,5 @@ class Article extends Model implements \Astrotomic\Translatable\Contracts\Transl
     public  function  getInFavoriteAttribute(){
         return auth()->user()?$this->favorite()->where('id', auth()->id())->count() >0:false;
     }
+
 }

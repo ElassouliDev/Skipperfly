@@ -79,7 +79,9 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+     public_path('storage') => storage_path('app/public'),
+        app()->basePath(). '/blog/storage11' => storage_path('app/public'),
+//        app()->make('path.config'). '/storage11' => storage_path('app/public'),
     ],
 
 ];

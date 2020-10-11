@@ -180,6 +180,19 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group  form-md-line-input">
+                                            <label for="form_control_1">@lang('admin.send_mail') : </label>
+                                            <div
+                                                class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-on"
+                                                style="width: 101px;">
+
+                                                <div class="bootstrap-switch-container"
+                                                     style="width: 148px; margin-left: 0px;">
+
+                                                    <input type="checkbox" name="send_mail" class="make-switch"
+                                                           data-on-text="ON" data-off-color="danger"></div>
+                                            </div>
+                                        </div>
 
                                     </div>
 

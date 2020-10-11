@@ -47,6 +47,7 @@ return [
     'twitter' => 'تويتر',
     'linkedin' => 'لينكيد ان',
     'logo' => 'الشعار',
+    'logo2' => 'الشعار (2)',
     'logout_title' => 'تسجيل الخروج',
     'text_notification' => 'محتوى الإشعار',
     'home_image' => 'الصورة الرئيسية',

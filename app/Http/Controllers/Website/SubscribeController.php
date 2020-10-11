@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Events\SubscribeEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\Admin;
@@ -21,7 +22,7 @@ class SubscribeController extends SupperController
 
         Subscribe::firstOrCreate(['email'=>$request->email]);
 
-
+        event(new SubscribeEvent($request->email));
         return response(['status'=>true, 'msg'=>trans('admin.send_email_in_success')]);
 
 

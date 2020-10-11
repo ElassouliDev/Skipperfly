@@ -20,9 +20,8 @@ class HomeController extends SupperController
         parent::__construct();
         $this->data['authors'] = User::admin()->get();
 //        $this->data['authors'] = Admin::all();
-        $this->data['tags'] = Tag::all();
+        $this->data['tags'] = Tag::get()->random(10);
         $this->data['categories'] = Category::all();
-        $this->data['nav_categories'] = Category::where('in_nav',true)->get();
 
 
 
@@ -32,7 +31,7 @@ class HomeController extends SupperController
 
 
         $this->data['last_article'] = Article::latest()->take(3)->get();
-        $this->data['articles'] = Article::paginate(8);
+        $this->data['articles'] = Article::latest()->paginate(8);
         $this->data['articles_paginate_data'] =    Arr::except($this->data['articles']->toArray(),['data']);
         $this->data['title'] = trans('admin.home');
 
@@ -50,7 +49,7 @@ class HomeController extends SupperController
         $this->data['last_article'] = Article::latest()->take(3)->get();
        $this->data['title'] = $this->data['category']->title;
 
-       $this->data['articles'] = Article::where('category_id',$this->data['category']->id)->paginate(8);
+       $this->data['articles'] = Article::where('category_id',$this->data['category']->id)->latest()->paginate(8);
         $this->data['articles_paginate_data'] =    Arr::except($this->data['articles']->toArray(),['data']);
 
        return view('website.index' , $this->data);
@@ -61,10 +60,13 @@ class HomeController extends SupperController
         $tag = Tag::whereHas('translations',function ($query)use ( $slug){
             $query->where('slug',$slug);
         })->firstOrFail();
-        $this->data['last_article'] = Article::latest()->take(3)->get();
+
+       $this->data['title'] = $tag->title;
+
+       $this->data['last_article'] = Article::latest()->take(3)->get();
         $this->data['articles'] = Article::whereHas('tags',function ($query) use ($tag){
             $query->where('id',$tag->id);
-        })->paginate(8);
+        })->latest()->paginate(8);
         $this->data['articles_paginate_data'] =    Arr::except($this->data['articles']->toArray(),['data']);
 
        return view('website.index' , $this->data);

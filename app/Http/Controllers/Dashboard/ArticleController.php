@@ -79,7 +79,7 @@ class ArticleController extends SupperController
         $article = Article::create($data);
         $article->tags()->sync($request->tag_id);
 
-        if ( true ||$request->has('send_mail')){
+        if ( $request->has('send_mail')){
             \App\Models\Subscribe::chunk(50,function ($data) use ($article){
 
                 dispatch(new  \App\Jobs\SendNewArticleMailJob($data,$article));
@@ -100,7 +100,9 @@ class ArticleController extends SupperController
      */
     public function show(Article $article)
     {
-        //
+        //        Article::with('tags',function ($query){
+        //            $query->where('status',true);
+        //        });
     }
 
     /**
@@ -147,6 +149,17 @@ class ArticleController extends SupperController
 
         $article->update($data);
         $article->tags()->sync($request->tag_id);
+
+
+        if ( $request->has('send_mail')){
+            \App\Models\Subscribe::chunk(50,function ($data) use ($article){
+
+                dispatch(new  \App\Jobs\SendNewArticleMailJob($data,$article));
+
+            });
+
+        }
+
 
         return redirect(route($this->data['route'].'.index'))->with(['success'=>trans('admin.updated_successfully')]);
 

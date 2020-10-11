@@ -1,7 +1,7 @@
 <section class="header">
 <div class="title-header" style="
-    background:linear-gradient(0deg, rgb(5 5 5 / 58%), rgb(15 5 5 / 58%)),
-    url('{{isset($settings['home_image']) && !empty($settings['home_image']) ?url('storage/').'/'.$settings['home_image']:url('/website/assets/img/header.png')}}');
+    background:
+    url('{{isset($settings_website['home_image']) && !empty($settings_website['home_image']) ?url('storage/').'/'.$settings_website['home_image']:url('/website/assets/img/header.png')}}');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -26,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{!isset($category) ?"active":""}}" href="#">@lang('admin.home')</a>
+                            <a class="nav-link {{!isset($category) ?"active":""}}" href="{{url('/')}}">@lang('admin.home')</a>
                         </li>
                         @foreach($nav_categories as $category1)
                             <li class="nav-item">

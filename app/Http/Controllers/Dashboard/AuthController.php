@@ -29,9 +29,6 @@ class AuthController extends SupperController
     public function login(Request $request)
     {
 
-
-      //  dd(auth()->attempt($request->only(['email','password'])));
-
         if ($user = auth()->attempt($request->only(['email','password']),$request->has('remember_me'))){
            return redirect(route('dashboard.index'));
         }

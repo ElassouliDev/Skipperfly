@@ -52,7 +52,12 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 
-
+//Route::get('migrate',function (){
+//   \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed');
+//});
+//Route::get('storage_link',function (){
+//   \Illuminate\Support\Facades\Artisan::call('storage:link');
+//});
 Route::namespace('Dashboard')->prefix('dashboard')->name('dashboard.')->group(function () {
 Route::middleware('guest')->group(function () {
 
@@ -66,6 +71,9 @@ Route::middleware('guest')->group(function () {
       Route::post('/logout', 'AuthController@logout')->name('logout');
 
       Route::resource('tag','TagController')->except('show');
+//      Route::get('subscribers','SubscribeController@index')->name('subscribers.index');
+//      Route::Delete('subscribers','SubscribeController@index')->name('subscribers.index');
+      Route::resource('subscribers','SubscribeController')->only('index','destroy');
       Route::resource('category','CategoryController')->except('show');
       Route::resource('article','ArticleController')->except('show');
       Route::resource('admin','AdminController')->except('show');
