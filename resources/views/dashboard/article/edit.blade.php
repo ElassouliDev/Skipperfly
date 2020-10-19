@@ -65,7 +65,7 @@
                                                         <label for="summernote_1">@lang('admin.content')
                                                             (@lang('admin.ar')) * </label>
 
-                                                        <textarea name="ar[content]" class="summernote_1">
+                                                        <textarea name="ar[content]" class="ckeditor form-control">
                                                 {{old('ar.content')??@$article->translate('ar')->content}}
                                             </textarea>
                                                     </div>
@@ -122,7 +122,7 @@
                                                         <label for="summernote_1">@lang('admin.content')
                                                             (@lang('admin.en')) * </label>
 
-                                                        <textarea name="en[content]" required class="summernote_1">
+                                                        <textarea name="en[content]" required class="ckeditor form-control">
                                                 {{old('en.content')??@$article->translate('en')->content}}
                                             </textarea>
                                                     </div>

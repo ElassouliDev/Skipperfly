@@ -238,7 +238,8 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group last">
-                                                <label class="control-label col-md-12">@lang('admin.subscribe_image')</label>
+                                                <label
+                                                    class="control-label col-md-12">@lang('admin.subscribe_image')</label>
                                                 <div class="col-md-9">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="fileinput-new thumbnail"
@@ -399,9 +400,13 @@
                                                 <label for="summernote_1">@lang('admin.subscribe_email_content')
                                                     * </label>
 
-                                                <textarea name="subscribe_email_content"  class="summernote_1">
-                                                    {{old('subscribe_email_content')??@$settings['subscribe_email_content']}}
-                                            </textarea>
+{{--                                                <textarea name="subscribe_email_content" class="summernote_1">--}}
+{{--                                            </textarea>--}}
+                                                <textarea class="ckeditor form-control" name="subscribe_email_content"
+                                                          rows="30">
+{{old('subscribe_email_content')??@$settings['subscribe_email_content']}}
+                                                </textarea>
+
                                             </div>
                                         </div>
                                     </div>
@@ -429,13 +434,14 @@
     {{--            <script type="text/javascript" src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>--}}
     {{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>--}}
     {{--            <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>--}}
+
     <script src="{{url('/dashboard_assets')}}/global/plugins/bootstrap-summernote/summernote.min.js"
             type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->
     <script>
         $(document).ready(function () {
             $('.summernote_1').summernote({height: 300});
-     });
+        });
     </script>
 
 
