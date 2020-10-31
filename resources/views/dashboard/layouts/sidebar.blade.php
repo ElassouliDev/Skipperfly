@@ -127,6 +127,12 @@
                     <span class="title">@lang('admin.subscribers')</span>
                 </a>
             </li>
+            <li class="start  {{$route=='dashboard.image'?"active":""}}">
+                <a href="{{route('dashboard.image.index')}}">
+                    <i class="fa fa-image"></i>
+                    <span class="title">@lang('admin.image')</span>
+                </a>
+            </li>
             <li class="start  {{$route=='dashboard.setting'?"active":""}}">
                 <a href="{{route('dashboard.setting.index')}}">
                     <i class="icon-settings"></i>

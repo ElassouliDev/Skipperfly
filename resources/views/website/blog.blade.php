@@ -92,7 +92,7 @@
                         </ul>
                     </div>
                 </div>
-                <img src="{{$article->image_url}}" class="media-post" style="height: 570px">
+                <img src="{{$article->image_url}}" class="media-post">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="text-post">
@@ -217,7 +217,7 @@
                     <input type="hidden" name="article_id" value="{{$article->id}}">
                     <div class="form-row">
                         <div class="col-lg-12">
-                                <textarea name="content" required class="form-control" placeholder="what do you thinks ?"
+                                <textarea name="content" required class="form-control" placeholder="what do you think ?"
                                           rows="4"></textarea>
                         </div>
 
@@ -396,8 +396,16 @@
                                     <input type="email"  name="email" required class="form-control" placeholder="Enter Your Email">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary">Subscribe</button>
+                                    <button type="submit"  name="subscribe" class="form-control btn btn-primary">Subscribe</button>
                                 </div>
+                           {{--     <div class="form-group">
+                                    <button type="submit" name="unsubscribe"
+                                            class="form-control btn btn-primary" style="
+                                                      color: #ff4876;
+                                                      background-color: #fFF;">Unsubscribe
+                                    </button>
+
+                                </div>--}}
                             </form>
                             <p class="text-success msg"></p>
 

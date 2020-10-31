@@ -20,11 +20,11 @@ class ArticleEmail extends Mailable
      *
      * @return void
      */
-    public  $user ;
+    public  $email ;
     public  $article ;
-    public function __construct( $article,$user=null)
+    public function __construct( $article,$email)
     {
-        $this->user = $user;
+        $this->email = $email;
         $this->article = $article;
     }
 
@@ -38,7 +38,8 @@ class ArticleEmail extends Mailable
 
         $setting_app = Setting::pluck('value','key')->toArray();
 
-        return $this->markdown('emails.new_article' , ['user'=>$this->user , 'article'=>$this->article , 'setting_app'=>$setting_app ])
+        return $this->markdown('emails.new_article' , ['email'=>$this->email , 'article'=>$this->article , 'setting_app'=>$setting_app ])
             ->subject("New Tourism Article Published – {$this->article['title']}");
     }
 }
+

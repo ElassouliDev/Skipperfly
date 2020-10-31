@@ -394,20 +394,28 @@
         });
     });
 
-    $(".subscribe_form").submit(function (event) {
+    $(".subscribe_form [type=submit]").click(function (event) {
         event.preventDefault();
         var $this = $(this);
+        var parent = $(this).parents('.subscribe_form');
+        // console.log( 'event' ,event);
+        // console.log( 'email' ,$(parent).find('[name=email]').val());
+        // console.log( 'action_name' ,$($this).attr('name'));
+
         {{--toastr.remove();--}}
         {{--toastr.warning("@lang('error.in_progress')");--}}
 
 
-        var posted_data = $(this).serialize();//new FormData(this),
+        var posted_data = {'email':$(parent).find('[name=email]').val() , 'action_name':$($this).attr('name') };//new FormData(this),
+        // var posted_data = {'email'}$(this).serialize();//new FormData(this),
+        // console.log('data',posted_data);
+
         url ='{{route('website.subscribe.create')}}';// $this.attr('action');
         $.post(url, posted_data, function (response) {
 
-            $($this).find("[name='email']").val('');
-            $($this).find('.msg').text(response.msg);
-            $($this).parent().find('.msg').text(response.msg);
+            $(parent).find("[name='email']").val('');
+            $(parent).find('.msg').text(response.msg);
+            $(parent).parent().find('.msg').text(response.msg);
             setTimeout(function () {
                 $('#popup').hide();
             }, 3000);

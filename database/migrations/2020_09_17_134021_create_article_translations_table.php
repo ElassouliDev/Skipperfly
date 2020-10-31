@@ -17,7 +17,7 @@ class CreateArticleTranslationsTable extends Migration
             $table->id();
             $table->string('locale')->index();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->longText('content');
             $table->string('slug');
             $table->string('keywords')->nullable();

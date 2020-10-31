@@ -27,8 +27,16 @@
                                         <input type="email"  name="email" required class="form-control" placeholder="Enter Your Email">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-primary">Subscribe</button>
+                                        <button type="submit" name="subscribe" class="form-control btn btn-primary">Subscribe</button>
                                     </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <button type="submit" name="unsubscribe"--}}
+{{--                                                class="form-control btn btn-primary" style="--}}
+{{--                                                      color: #ff4876;--}}
+{{--                                                      background-color: #fFF;">Unsubscribe--}}
+{{--                                        </button>--}}
+
+{{--                                    </div>--}}
                                 </form>
                                 <p class="text-success msg"></p>
 

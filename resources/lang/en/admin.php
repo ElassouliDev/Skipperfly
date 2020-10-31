@@ -71,6 +71,8 @@ return [
     'Confirm new password'=>'Confirm new password',
     'change_password'=>'Change Password',
     'send_email_in_success'=>'Thanks you, Send email is  done',
+    'already subscribed'=>'Already subscribed. Please add new email',
+    'unsubscribed success'=>'Unsubscribed success',
     'Enter your password'=>'Enter your password',
     'Enter your email'=>'Enter your email',
     'Enter your name'=>'Enter your name',
@@ -103,6 +105,7 @@ return [
     'subscribe_email_content' => 'Subscribe email content ',
     'subscribe_email_title' => 'Subscribe email title ',
     'emails_content' => 'Emails content',
+    'image_url' => 'Image Url',
 
 
 ];

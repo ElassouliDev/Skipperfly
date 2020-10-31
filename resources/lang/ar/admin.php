@@ -73,7 +73,9 @@ return [
     'New password' => 'كلمة المرور الجديد',
     'Confirm new password' => 'تاكيد كلمة المرور الجديدة',
     'change_password' => 'تغيير كلمة المرور',
-    'send_email_in_success' => 'شكرا لك  تم ارسال الايميل بنجاح',
+    'send_email_in_success' => 'شكرا لك  تم ارسال الإشتراك بنجاح',
+    'already subscribed'=>'أنت بالفعل مشترك , الرجاء إدخال بريد إلكتروني جديد',
+    'unsubscribed success'=>'تم إالغاء المتابعة بنجاح',
     'Enter your password' => 'ادخل كلمة المرور',
     'Enter your email' => 'ادخل البريد الالكتروني',
     'Enter your name' => 'ادخل الاسم',
@@ -116,6 +118,8 @@ return [
     'previous' => 'السابق',
     'categories' => 'التصنيفات',
     'featured posts' => 'المقالات الجديدة',
+
+    'image_url' => 'مسار الصورة',
 
 
 

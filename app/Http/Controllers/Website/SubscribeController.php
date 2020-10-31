@@ -17,16 +17,48 @@ class SubscribeController extends SupperController
 {
 
 
-    public  function  store(SubscribeRequest $request){
+    public function store(SubscribeRequest $request)
+    {
 
 
-        Subscribe::firstOrCreate(['email'=>$request->email]);
+        //dd($request->all());
+        if ($request->has('action_name') && $request->action_name === 'unsubscribe') {
+            Subscribe::where('email', $request->email)->delete();
+
+            return response(['status' => true, 'msg' => trans('admin.unsubscribed success')]);
+
+
+        }
+
+
+        if (Subscribe::where('email', $request->email)->exists())
+            return response(['status' => true, 'msg' => trans('admin.already subscribed')]);
+
+
+        Subscribe::firstOrCreate(['email' => $request->email]);
 
         event(new SubscribeEvent($request->email));
-        return response(['status'=>true, 'msg'=>trans('admin.send_email_in_success')]);
+        return response(['status' => true, 'msg' => trans('admin.send_email_in_success')]);
 
 
-   }
+    }
+
+    public function unsubscribe(SubscribeRequest $request)
+    {
+
+
+        //dd($request->all());
+        if ($request->has('email') && !empty($request->email)) {
+            Subscribe::where('email', $request->email)->delete();
+
+            return redirect('/')->with('status',trans('admin.unsubscribed success'));
+
+
+        }
+
+        abort(404);
+
+    }
 
 
 }

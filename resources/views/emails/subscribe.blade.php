@@ -14,7 +14,7 @@
 <body>
 <div class="container" style="padding: 22px">
 
-    {!! @$setting_app['subscribe_email_content']!!}
+    {!! \Illuminate\Support\Str::replaceLast('unsubscribe','<a href="'.route('website.unsubscribe',['email'=>$email]).'" target="_blank">unsubscribe</a>' , @$setting_app['subscribe_email_content'])!!}
 </div>
 
 

@@ -1,6 +1,6 @@
 <div class="post-box">
     <div class="post-image">
-        <a href="{{route('website.category.show',$article->category->slug)}}">
+        <a href="{{route('website.article.show',$article->slug)}}">
             <span class="interviews" style="color:{{$article->category->color}} ; background:{{$article->category->background}}  ">{{$article->category->title}}</span>
             <img src="{{$article->image_url}}" alt="{{$article->title}}" width="100%">
         </a>

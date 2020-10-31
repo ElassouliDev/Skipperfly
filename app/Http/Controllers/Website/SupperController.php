@@ -17,10 +17,13 @@ class SupperController extends Controller
     {
 
 //        $this->data['settings_website'] = Setting::pluck('value','key')->toArray();
-        View::share('settings_website',  Setting::pluck('value','key')->toArray());
+        View::share('settings_website', Setting::pluck('value', 'key')->toArray());
 
-        config()->set('translatable.locale',app()->getLocale());
-        $this->data['nav_categories'] = Category::where('in_nav',true)->get();
+        config()->set('translatable.locale', app()->getLocale());
+        $this->data['nav_categories'] = Category::where('in_nav', true)->get();
+
+
+
 //        Session::push('key1',true);
 //        dd();
         ;
@@ -37,15 +40,20 @@ class SupperController extends Controller
 
 //        dd(Cookie::getQueuedCookies());
 
-        if (isset($_COOKIE['show_subscribe'])){
-            $this->data['show_subscribe'] =false;
-        }else{
-//            session(['key1' => 'value']);
-//            Session::push('key1',true);
-            setcookie('show_subscribe','500' ,  time() + (86400 * 30), "/");
-            $this->data['show_subscribe'] =true;
-        }
+                if (isset($_COOKIE['show_subscribe1']) || auth()->check()){
+                    $this->data['show_subscribe'] =false;
+                }else{
+                    setcookie('show_subscribe1','500' ,  time() + 3600, "/");
+                    $this->data['show_subscribe'] =true;
+                }
 
+//        dd(\session()->all());
+      /*  if (Session::has('show_subscribe')) {
+            $this->data['show_subscribe'] = false;
+        } else {
+            Session::put('show_subscribe', "tstsss");
+            $this->data['show_subscribe'] = true;
+        }*/
 
 //        dd($this->data['show_subscribe']);
 

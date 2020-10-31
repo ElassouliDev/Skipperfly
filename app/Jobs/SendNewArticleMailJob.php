@@ -34,8 +34,6 @@ class SendNewArticleMailJob implements ShouldQueue
     {
         foreach ($this->emails as $email_data)
            \Mail::to($email_data->email)
-      ->send(new \App\Mail\ArticleEmail($this->article))
-
-  ;
+      ->send(new \App\Mail\ArticleEmail($this->article,$email_data->email));
     }
 }

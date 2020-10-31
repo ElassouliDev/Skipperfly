@@ -146,8 +146,10 @@
                         <div class="sidebar-box">
                             <h3>subscribe</h3>
                             <div class="sidebar-subscribe">
-{{--                                <img src="{{url('website/')}}/assets/img/subscribe.png">--}}
-                                <img src="{{isset($settings_website['subscribe_image'])&& !empty($settings_website['subscribe_image'])?url('storage/').'/'.$settings_website['subscribe_image']:url('/website/assets/img/subscribe.png')}}" alt="subscribe">
+                                {{--                                <img src="{{url('website/')}}/assets/img/subscribe.png">--}}
+                                <img
+                                    src="{{isset($settings_website['subscribe_image'])&& !empty($settings_website['subscribe_image'])?url('storage/').'/'.$settings_website['subscribe_image']:url('/website/assets/img/subscribe.png')}}"
+                                    alt="subscribe">
                                 <div class="content-subscribe">
                                     <h3>Keep updated of travel news & experiences </h3>
                                     <p>Join our newsletter & receive travel news & experiences you don’t want to
@@ -163,11 +165,20 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <button type="submit"
+                                            <button type="submit" name="subscribe"
                                                     class="form-control btn btn-primary">Subscribe
                                             </button>
-                                        </div>
 
+                                        </div>
+                                   {{--     <div class="form-group">
+                                            <button type="submit" name="unsubscribe"
+                                                    class="form-control btn btn-primary" style="
+                                                      color: #ff4876;
+                                                      background-color: #fFF;">Unsubscribe
+                                            </button>
+
+                                        </div>
+--}}
 
                                     </form>
                                     <p class="text-success msg"></p>

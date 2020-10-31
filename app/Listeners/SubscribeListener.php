@@ -29,7 +29,7 @@ class SubscribeListener
     public function handle(SubscribeEvent $event)
     {
         \Mail::to($event->email)
-            ->send(new SubscribeEmail())
+            ->send(new SubscribeEmail($event->email))
 
         ;
     }
