@@ -416,6 +416,8 @@
             $(parent).find("[name='email']").val('');
             $(parent).find('.msg').text(response.msg);
             $(parent).parent().find('.msg').text(response.msg);
+
+            if (response.status == true)
             setTimeout(function () {
                 $('#popup').hide();
             }, 3000);
@@ -581,7 +583,12 @@
             });
     });
 
-
+    $(window).click(function(){
+        $(".share").click(function(){
+            return false;
+        });
+        $('.share').find(".social-share").removeClass("show");
+    });
 
 </script>
 @stack('js')

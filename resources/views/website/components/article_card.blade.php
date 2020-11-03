@@ -50,7 +50,7 @@
                 </li>
                 <li>
                     <div class="all-comment">
-                        <a href="#" title="">
+                        <a href="{{route('website.article.show',$article->slug)}}" title="">
                             <i class="far fa-comment-alt"></i> <span>{{$article->count_comments}}</span>
                         </a>
                     </div>

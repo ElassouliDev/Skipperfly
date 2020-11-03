@@ -32,7 +32,7 @@ class SubscribeController extends SupperController
 
 
         if (Subscribe::where('email', $request->email)->exists())
-            return response(['status' => true, 'msg' => trans('admin.already subscribed')]);
+            return response(['status' => false, 'msg' => trans('admin.already subscribed')]);
 
 
         Subscribe::firstOrCreate(['email' => $request->email]);
