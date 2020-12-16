@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.author-name {
+    margin-left: 10px;
+}
+
+.subscribe .row > div:first-of-type,
+.popup-subscribe .row > div:first-of-type {
+    padding-right: 0px;
+}
+
+.subscribe .row > div:last-of-type,
+.popup-subscribe .row > div:last-of-type {
+    padding-left: 0px;
+}
+.authors ul li a img {
+    margin-right: 50px;
+}
+
+.post-featured ul li a img {
+    margin-right: 10px;
+}
+
+.verification::after {
+    left: 65px;
+}
+
+.close-subscribe {
+    right: -20px;
+}
+
+.content-subscribe form > div:last-of-type {
+    margin-left: 10px;
+}
+
+.form-subscribe form .form-group:last-of-type {
+    margin-left: 8px;
+}
+
+.post-image span {
+    right: 15px;
+}
+
+.pagination ul li:first-of-type i {
+    padding-right: 5px;
+}
+
+.pagination ul li:last-of-type i {
+    padding-left: 5px;
+}
+
+.interactions ul li {
+    margin-right: 30px;
+}
+
+.content-post .interactions ul li:last-of-type {
+    margin-right: 0px;
+}
+
+.content-post .interactions ul li:last-of-type {
+    right: 15px;
+}
+
+.comment-author .say {
+    padding-left: 10px;
+}
+
+.comment-metadata .data {
+    padding-right: 20px;
+}
+
+.comment-likes span {
+    margin-right: 10px;
+}
+
+.actions ul.inline li {
+    margin-right: 20px;
+}
+
+.search-section .input-group input{
+    border-left: 0;
+}
+
+.sidebarFilter .card-header a:before {
+    right: 0;
+}
+
+.social-media li a {
+    margin-left: 20px;
+}
+
+.social-media {
+    text-align: right;
+}
+
+.sidebarFilter  .authors ul li a img{
+    margin-right: 25px;
+}
+
+.select2-container--default .select2-results__option--selected{
+    border-left: 4px solid #21386D;
+}
+
+.select2-results__option{
+    border-left: 4px solid #fff;
+}
+@media (max-width: 991px) {
+    .social-media {
+        text-align: center;
+    }
+    .subscribe .row > div:first-of-type,
+    .popup-subscribe .row > div:first-of-type {
+        padding-right: 15px;
+    }
+    .subscribe .row > div:last-of-type,
+    .popup-subscribe .row > div:last-of-type {
+        padding-left: 15px;
+    }
+
+}
+
+@media (max-width: 380px) {
+    .comment-likes span {
+        margin-right: 5px;
+    }
+}

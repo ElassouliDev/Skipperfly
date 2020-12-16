@@ -9,7 +9,7 @@ $(document).ready(function () {
   });
 
 
-  
+
 
   $(window).scroll(function(){
     if ($(this).scrollTop() > 100) {
@@ -27,4 +27,10 @@ $(document).ready(function () {
       1000
     );
   });
+});
+
+
+$('.select2').select2({
+    minimumResultsForSearch: -1,
+    width: '160'
 });

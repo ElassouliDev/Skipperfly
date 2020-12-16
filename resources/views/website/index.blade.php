@@ -1,6 +1,6 @@
 @extends('website.layouts.index')
 
-
+{{--@dd($articles->render());--}}
 @section('title', @$title)
 @section('content')
 
@@ -32,7 +32,9 @@
                             @endif
 
                         </div>
-                        @if($articles_paginate_data['last_page'] > 1)
+
+                        {{$articles->onEachSide(5)->links('vendor.pagination.custom-paginate')}}
+             {{--           @if($articles_paginate_data['last_page'] > 1)
                             <div class="pagination">
                                 <ul class="list-unstyled inline">
                                     <li><a href="{{$articles_paginate_data['prev_page_url']??'javascript:void(0)'}}"
@@ -52,7 +54,7 @@
                                     <span>{{$articles_paginate_data['last_page'] }}</span>
                                 </div>
                             </div>
-                        @endif
+                        @endif--}}
 
                     </div>
 
@@ -131,7 +133,7 @@
                             </div>
                         </div>
                         <div class="sidebar-box">
-                            <h3>tags</h3>
+                            <h3>@lang('admin.tags')</h3>
                             <div class="tags">
                                 <ul class="list-unstyled">
                                     @foreach($tags as $tag)
@@ -144,16 +146,15 @@
                             </div>
                         </div>
                         <div class="sidebar-box">
-                            <h3>subscribe</h3>
+                            <h3>@lang('admin.Subscribe to Our Newsletters')</h3>
                             <div class="sidebar-subscribe">
                                 {{--                                <img src="{{url('website/')}}/assets/img/subscribe.png">--}}
                                 <img
                                     src="{{isset($settings_website['subscribe_image'])&& !empty($settings_website['subscribe_image'])?url('storage/').'/'.$settings_website['subscribe_image']:url('/website/assets/img/subscribe.png')}}"
                                     alt="subscribe">
                                 <div class="content-subscribe">
-                                    <h3>Keep updated of travel news & experiences </h3>
-                                    <p>Join our newsletter & receive travel news & experiences you don’t want to
-                                        miss.
+                                    <h3>@lang('admin.Keep updated of travel news & experiences') </h3>
+                                    <p>@lang('admin.Join our newsletter & receive travel news & experiences you don’t want to miss.')
                                     </p>
 
 
@@ -161,24 +162,16 @@
 
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
-                                                   placeholder="Enter Your Email">
+                                                   placeholder="@lang('admin.Enter your email')">
                                         </div>
 
                                         <div class="form-group">
                                             <button type="submit" name="subscribe"
-                                                    class="form-control btn btn-primary">Subscribe
+                                                    class="form-control btn btn-primary">@lang('admin.subscribe')
                                             </button>
 
                                         </div>
-                                   {{--     <div class="form-group">
-                                            <button type="submit" name="unsubscribe"
-                                                    class="form-control btn btn-primary" style="
-                                                      color: #ff4876;
-                                                      background-color: #fFF;">Unsubscribe
-                                            </button>
 
-                                        </div>
---}}
 
                                     </form>
                                     <p class="text-success msg"></p>

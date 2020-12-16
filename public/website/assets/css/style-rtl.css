@@ -1,16 +1,178 @@
-.post-featured ul li a img{
-    margin-left: 20px;
-    margin-right: 0;
+@font-face {
+    font-family: "DroidKufi";
+    src: url("../../assets/fonts/DroidKufi-Regular.woff")
+}
+
+
+body{
+ text-align: right;
+ font-family: "DroidKufi",sans-serif;
+ direction: rtl;
+}
+
+.list-unstyled{
+    padding-right: 0;
+}
+
+.alert-dismissible {
+    padding-right: 0;
+    padding-left: 4rem;
+}
+
+.alert-dismissible .close{
+    left: 0px;
+    right: auto;
+}
+
+.author-name {
+    margin-right: 10px;
+}
+
+.subscribe .row > div:first-of-type, .popup-subscribe .row > div:first-of-type {
+    padding-left: 0px;
+}
+.subscribe .row > div:last-of-type, .popup-subscribe .row > div:last-of-type {
+    padding-right: 0px;
 }
 .authors ul li a img {
-    margin-right: 0px;
     margin-left: 50px;
 }
-.verification::after {
-    left: auto;
-    right: 70px;
+.post-featured ul li a img {
+    margin-left: 10px;
 }
-.social-share {
-    left: auto;
-    right: -180px;
+.verification::after {
+    right: 65px;
+}
+
+.close-subscribe {
+    left: -20px;
+}
+
+.content-subscribe form > div:last-of-type {
+    margin-right: 10px;
+}
+
+.form-subscribe form .form-group:last-of-type {
+    margin-right: 8px;
+}
+
+.post-image span {
+    left: 15px;
+}
+
+.pagination ul li:first-of-type i {
+    padding-right: 5px;
+    transform: rotate(180deg);
+}
+
+.pagination ul li:last-of-type i {
+    padding-left: 5px;
+    transform: rotate(180deg);
+}
+
+.interactions ul li {
+    margin-left: 30px;
+}
+
+.content-post .interactions ul li:last-of-type {
+    margin-left: 0px;
+}
+
+
+.content-post .interactions ul li:last-of-type {
+    left: 15px;
+}
+
+.comment-author .say {
+    padding-right: 10px;
+}
+
+.comment-metadata .data {
+    padding-left: 20px;
+}
+
+.comment-likes span {
+    margin-left: 10px;
+}
+
+.actions ul.inline li {
+    margin-left: 20px;
+}
+
+.search-section .input-group input{
+    border-right: 0;
+}
+
+.input-group-prepend{
+    margin-left: -1px;
+}
+
+.input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child) {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.formSearch .input-group-text{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.sidebarFilter .card-header a:before {
+    left: 0;
+}
+
+.social-media li a {
+    margin-right: 20px;
+}
+
+.social-media {
+    text-align: left;
+}
+.sidebarFilter  .authors ul li a img{
+    margin-left: 25px;
+}
+
+input.form-control{
+    text-align: right;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered{
+    padding-left: 20px;
+    padding-right: 8px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    right: auto;
+    left: 1px;
+}
+
+.select2-container--default .select2-results__option--selected{
+    border-right: 4px solid #21386D;
+}
+
+.select2-results__option{
+    border-right: 4px solid #fff;
+}
+@media (max-width: 991px) {
+    .social-media {
+        text-align: center;
+    }
+    .subscribe .row > div:first-of-type,
+    .popup-subscribe .row > div:first-of-type {
+        padding-left: 15px;
+    }
+    .subscribe .row > div:last-of-type,
+    .popup-subscribe .row > div:last-of-type {
+        padding-right: 15px;
+    }
+
+}
+@media (max-width: 380px) {
+    .comment-likes span {
+        margin-left: 5px;
+    }
 }

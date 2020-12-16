@@ -1,11 +1,11 @@
 <section class="header">
-<div class="title-header" style="
-    background:
-    url('{{isset($settings_website['home_image']) && !empty($settings_website['home_image']) ?url('storage/').'/'.$settings_website['home_image']:url('/website/assets/img/header.png')}}');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
- ">
+    <div class="title-header" style="
+        background:
+        url('{{isset($settings_website['home_image']) && !empty($settings_website['home_image']) ?url('storage/').'/'.$settings_website['home_image']:url('/website/assets/img/header.png')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -33,16 +33,21 @@
                                 <a class="nav-link {{isset($category)&&$category1->id == $category->id ?"active":""}}"
                                    href="{{route('website.category.show',$category1->slug)}}">{{$category1->title}}</a>
                             </li>
+
+
                         @endforeach
 
                         @if(auth()->guest())
+                            <li class="nav-item">
+                                <button type="submit" class="form-control btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">@lang('admin.login')</button>
+
+                            </li>
+
+                        @endif
                         <li class="nav-item">
-                            <button type="submit" class="form-control btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">@lang('admin.login')</button>
-
+                            <a class="nav-link"
+                               href="{{route('website.search')}}"><i class="far fa-search"></i></a>
                         </li>
-
-                            @endif
-
 
                     </ul>
                 </div>

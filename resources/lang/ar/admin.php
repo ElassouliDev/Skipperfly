@@ -11,11 +11,21 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'login'=>'تسجيل الدخول',
+
     'id' => '#',
 //    'tag'=>'Tag',
     'home' => 'الرئيسية',
-//    'tags'=>'Tags',
+    'tags'=>'الوسوم',
     'article' => 'المقالات',
+    'subscribe' => 'إشتراك',
+    'blog' => 'المدونة',
+    'fag' => 'التعليمات',
+    'contact_us' => 'تواصل  معنا',
+    'about_us' => 'من نحن',
+    'trips' => 'الرحلات',
+    'Join our newsletter & receive travel news & experiences you don’t want to miss.' => 'انضم إلى نشرتنا الإخبارية واحصل على أخبار السفر والتجارب التي لا تريد أن تفوتها.',
+    'Keep updated of travel news & experiences' => 'ابق على اطلاع بأخبار السفر والتجارب',
     'setting' => 'الإعدادات',
     'category' => 'التصنيفات',
     'description' => 'الوصف',
@@ -120,7 +130,40 @@ return [
     'featured posts' => 'المقالات الجديدة',
 
     'image_url' => 'مسار الصورة',
+    'services' => 'الخدمات',
+    'services' => 'الخدمات',
+    'help center' => 'مركز المساعدة',
+    'marketing' => 'التسويق',
+    'Subscribe to Our Newsletters' => 'اشترك في نشراتنا الإخبارية',
+    'cookies' => 'ملفات تعريف الارتباط',
+    'privacy' => 'سياسة الخصوصية',
+    'terms_and_conditions' => 'الشروط والاحكام',
+
+    'no_comments_exists' => 'لا يوجد تعليقات',
+    'comments' => 'التعليقات',
+    'views' => 'مشاهدة',
+    'share_with' => 'مشاركة بواسطة',
+    'share to facebook' => 'مشاركة الي الفيسبوك',
+    'share to twitter' => 'مشاركة الي  تويتر',
+    'share to linkedin' => 'مشاركة الي لينكدان',
+    'see all' => 'مشاهدة الكل',
+    'related posts' => 'المقالات المتعلقة',
+    'Post your comment' => ' نشر التعليق',
+    'what do you think' => 'أكتب ماذا تفكر ؟  ',
+    'read also' => 'إقرا أيضا',
+    'Your Email address will not be published. Required fields are marked' => 'لن يتم نشر عنوان بريدك الإلكتروني. الحقول المطلوبة محددة',
+
+'filter by'=>'فلترة البحث بواسطة',
+
+    'search_results' => 'نتائج البحث',
+    'sort_by' => 'ترتيب بواسطة',
 
 
+    'newest' => 'الأحدث',
+    'most_comments' => 'الأكثر تعليقا',
+    'most_likes' => 'الأكثر اعجابا',
+    'most_show' => 'الاكثر مشاهدة',
+    'search' => 'بحث ...',
+    'blog_post_found' => 'مقال',
 
 ];

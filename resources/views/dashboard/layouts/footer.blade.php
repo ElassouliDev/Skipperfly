@@ -97,7 +97,7 @@
 <script src="{{url('dashboard_assets')}}/global/plugins/jquery-tags-input/jquery.tagsinput.min.js" type="text/javascript"></script>
 --}}
 <script src="{{url('dashboard_assets')}}/taginput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="{{url('dashboard_assets')}}//global/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{url('dashboard_assets')}}/global/plugins/ckeditor/ckeditor.js"></script>
 
 <script>
     jQuery(document).ready(function() {

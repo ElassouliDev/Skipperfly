@@ -25,40 +25,31 @@
                                         </a>
                                     </li>
                                 @endforeach
-                                {{--                                <li><a href="" class="active">english</a></li>--}}
-                                {{--                                <li><a href="">arabic</a></li>--}}
-                                {{--                                <li><a href="">turkish</a></li>--}}
-                                {{--                                <li><a href="">swedish</a></li>--}}
+
                             </ul>
                         </li>
-                        {{--                        <li>--}}
-                        {{--                            <div class="payments">--}}
-                        {{--                                <img src="{{url('website/')}}/assets/img/paymentMethods.svg" alt="">--}}
-                        {{--                            </div>--}}
-                        {{--                        </li>--}}
+                      </ul>
+                </div>
+                <div class="col-lg-2 col-md-12">
+                    <ul class="list-unstyled links">
+                        <li><strong>@lang('admin.about_us')</strong></li>
+                        <li><a href="{{@$settings_website['blog_url']}}" title="blog" target="_blank">@lang('admin.blog')</a></li>
+                        <li><a href="{{@$settings_website['about_url']}}" title="about" target="_blank">@lang('admin.about_us')</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-12">
                     <ul class="list-unstyled links">
-                        <li><strong>about us</strong></li>
-                        <li><a href="{{@$settings_website['blog_url']}}" title="blog" target="_blank">blog</a></li>
-                        <li><a href="{{@$settings_website['about_url']}}" title="about" target="_blank">about</a></li>
+                        <li><strong>@lang('admin.help center')</strong></li>
+                        <li><a href="{{@$settings_website['faq_url']}}" title="faq" target="_blank">@lang('admin.fag')</a></li>
+                        <li><a href="{{@$settings_website['contact_us_url']}}" title="contact us" target="_blank">@lang('admin.contact_us')</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-12">
                     <ul class="list-unstyled links">
-                        <li><strong>help center</strong></li>
-                        <li><a href="{{@$settings_website['faq_url']}}" title="faq" target="_blank">faq</a></li>
-                        <li><a href="{{@$settings_website['contact_us_url']}}" title="contact us" target="_blank">contact
-                                us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-12">
-                    <ul class="list-unstyled links">
-                        <li><strong>marketing</strong></li>
-                        <li><a href="{{@$settings_website['trips_url']}}" title="trips" target="_blank">trips</a></li>
+                        <li><strong>@lang('admin.marketing')</strong></li>
+                        <li><a href="{{@$settings_website['trips_url']}}" title="trips" target="_blank">@lang('admin.trips')</a></li>
                         <li><a href="{{@$settings_website['services_url']}}" title="Services"
-                               target="_blank">Services</a></li>
+                               target="_blank">@lang('admin.services')</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-12">
@@ -75,29 +66,22 @@
                         </li>
 
                         <li>
-                            <p class="subscribe-paragraph">Subscribe to Our Newsletters</p>
+                            <p class="subscribe-paragraph">@lang('admin.Subscribe to Our Newsletters')</p>
                             <form action="" method="post" class="subscribe_form">
                                 <div class="form-group">
                                     <input type="email" name="email" required class="form-control mb-3 mt-3"
-                                           placeholder="Enter Your Email">
+                                           placeholder="@lang('admin.Enter your email')">
                                 </div>
                                 <p class="subscribe-paragraph text-success msg"></p>
 
                                 <div class="form-group">
                                     <button type="submit" name="subscribe" class="form-control btn btn-primary">
-                                        Subscribe
+                                        @lang('admin.subscribe')
                                     </button>
 
 
                                 </div>
-                              {{--  <div class="form-group">
-                                    <button type="submit" name="unsubscribe"
-                                            class="form-control btn btn-primary" style="
-                                                      color: #ff4876;
-                                                      background-color: #fFF;  border:0 ">Unsubscribe
-                                    </button>
 
-                                </div>--}}
                             </form>
 
                         </li>
@@ -112,14 +96,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-lg-4 col"><a href="{{@$settings_website['cookies_url']}}" title="Cookies"
-                                                     target="_blank">Cookies</a></div>
-                        <div class="col-lg-4 col"><a href="{{@$settings_website['privacy_url']}}" title="Privacy"
-                                                     target="_blank">Privacy</a>
+                        <div class="col-lg-4 col"><a href="{{@$settings_website['cookies_url']}}" title="@lang('admin.cookies')"
+                                                     target="_blank">@lang('admin.cookies')</a></div>
+                        <div class="col-lg-4 col"><a href="{{@$settings_website['privacy_url']}}" title="@lang('admin.privacy')"
+                                                     target="_blank">@lang('admin.privacy')</a>
                         </div>
-                        <div class="col-lg-4 col"><a href="{{@$settings_website['terms_and_conditions_url']}}"
-                                                     title="Terms and conditions" target="_blank">Terms and
-                                conditions</a></div>
+                        <div class="col-lg-4 col">
+                            <a href="{{@$settings_website['terms_and_conditions_url']}}"
+                            title="@lang('admin.terms_and_conditions')" target="_blank">@lang('admin.terms_and_conditions')</a></div>
                     </div>
                 </div>
                 <div class="col-lg-3">
